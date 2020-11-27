@@ -5,16 +5,28 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { ProfessorComponent } from './professor/professor/professor.component';
 import { StudentComponent } from './student/student/student.component';
+import { LoginComponent } from './home/login/login.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'admin', component: AdminComponent},
+  { path: 'professor', component: ProfessorComponent},
+  { path: 'student', component: StudentComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
     ProfessorComponent,
-    StudentComponent
+    StudentComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
