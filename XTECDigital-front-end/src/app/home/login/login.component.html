@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="modal-dialog text-center">
+  <div class="col-sm-9 main-section">
+    <div class="modal-content">
+      <div class="col-12 title"><h2>XTEC Digital</h2></div>
+      <div class="col-12 user-img">
+        <i class="far fa-user"></i>
+      </div>
+      <div class="col-12 form-input">
+        <form (ngSubmit)="onLogin()" #login="ngForm">
+          <!--Username-->
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              ngModel
+              name="username"
+              required
+              placeholder="Usuario"
+            />
+          </div>
+          <!--Password-->
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              ngModel
+              name="passwordHash"
+              required
+              placeholder="Contraseña"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!login.valid">Ingresar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
