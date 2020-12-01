@@ -8,6 +8,7 @@ import { StudentComponent } from './student-view/student/student.component';
 import { LoginComponent } from './home-view/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import { CourseManagementComponent } from './admin-view/admin/course-management/course-management.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     AdminComponent,
     ProfessorComponent,
     StudentComponent,
-    LoginComponent
+    LoginComponent,
+    CourseManagementComponent
   ],
   imports: [
     BrowserModule,
