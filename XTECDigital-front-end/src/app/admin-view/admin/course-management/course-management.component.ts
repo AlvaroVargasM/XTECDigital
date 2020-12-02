@@ -20,5 +20,23 @@ export class CourseManagementComponent implements OnInit {
 
   onCreateCourse(): void {
     console.log(this.newCourseForm.value.name);
+
+    /*
+      Aca quiero que se anhada un nuevo curso al server, y actualizar a la lista
+      de cursos disponibles, mientras tanto estare anhadiendo los cursos nuevos
+      a la lista de cursos disponibles
+     */
+    this.aService.coursesAvailable.push(
+      new Course(
+        this.newCourseForm.value.code,
+        this.newCourseForm.value.name,
+        this.newCourseForm.value.credits,
+        this.newCourseForm.value.career
+      )
+    );
+
+    alert('Nuevo Curso Ingresado');
+    this.newCourseForm.reset();
+    this.ngOnInit();
   }
 }
