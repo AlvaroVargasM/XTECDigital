@@ -14,14 +14,18 @@
 </nav>
 
 <!--Course Management and Initialize Semester Sections-->
+<!--We alternate between them by using a local boolean variable that is changed
+    when the start semester button is pressed-->
 <div class="row">
   <div class="col"></div>
   <div class="col-auto text-center">
     <button
+      *ngIf="!isStartSemester"
       class="btn my-initialize-semester-button"
-      [routerLink]="[]">Inicializar Nuevo Semestre
+      (click)="onStartSemester()">Inicializar Nuevo Semestre
     </button>
-    <app-course-management></app-course-management>
+    <app-course-management *ngIf="!isStartSemester"></app-course-management>
+    <app-start-semester *ngIf="isStartSemester"></app-start-semester>
   </div>
   <div class="col"></div>
 </div>

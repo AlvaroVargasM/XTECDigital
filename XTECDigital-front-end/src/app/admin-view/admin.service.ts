@@ -9,6 +9,8 @@ export class AdminService {
 
   coursesAvailable: Course[];
 
+  // START SEMESTER
+
   constructor() {
     this.coursesAvailable = [
       new Course(
