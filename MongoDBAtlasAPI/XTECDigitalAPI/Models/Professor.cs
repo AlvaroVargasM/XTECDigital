@@ -7,5 +7,6 @@ namespace XTECDigitalAPI.Models
 {
     public class Professor
     {
+
     }
 }
