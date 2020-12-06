@@ -11,6 +11,7 @@ namespace XTECDigitalAPI.Models
         public static string MongoConnection = "mongodb+srv://SMZ19:SMZ19@xtecdigitalcluster.conak.mongodb.net/XTECDigitalDB?retryWrites=true&w=majority";
         public static string MongoDatabase = "XTECDigitalDB";
         private readonly IMongoCollection<Student> _students;
+
         public MongoDBAccessProvider()
         {
             var client = new MongoClient(MongoConnection);
