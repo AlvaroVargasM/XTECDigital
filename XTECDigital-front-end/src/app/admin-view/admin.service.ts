@@ -11,6 +11,8 @@ export class AdminService {
 
   // START SEMESTER
 
+  coursesActive: Course[];
+
   constructor() {
     this.coursesAvailable = [
       new Course(

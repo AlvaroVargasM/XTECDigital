@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Course} from '../../../models/course.model';
 import {AdminService} from '../../admin.service';
 import {NgForm} from '@angular/forms';
+import {Semester} from '../../../models/semester.model';
 
 @Component({
   selector: 'app-start-semester',
@@ -9,13 +10,25 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./start-semester.component.css']
 })
 export class StartSemesterComponent implements OnInit {
+  @ViewChild('createSemester') createSemesterForm: NgForm;
   @ViewChild('selectCourses') SelectCoursesForm: NgForm;
-  courses: Course[];
+  step: number;
+  newSemester: Semester;
+  coursesList: Course[];
+  coursesChosen: Course[];
 
-  constructor(private aService: AdminService) { }
+  constructor(private aService: AdminService) {
+    this.step = 1;
+  }
 
   ngOnInit(): void {
-    this.courses = this.aService.coursesAvailable;
+    this.coursesList = this.aService.coursesAvailable;
+    this.coursesChosen = this.aService.coursesActive;
+  }
+
+  onCreateSemester(): void {
+    this.step++;
+    this.ngOnInit();
   }
 
   onSelectCourses(): void {
@@ -23,5 +36,7 @@ export class StartSemesterComponent implements OnInit {
       console.log(this.SelectCoursesForm.value.courses[property]);
     }
   }
+
+
 
 }
