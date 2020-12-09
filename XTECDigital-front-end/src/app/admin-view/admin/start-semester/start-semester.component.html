@@ -1,1 +1,19 @@
-<p>start-semester works!</p>
+<div class="card my-start-semester-card">
+  <div class="card-body">
+    <h5 class="card-title">
+      Escoger Cursos Para Iniciar Semestre
+    </h5>
+    <div class="card-text">
+      <form (ngSubmit)="onSelectCourses()" #selectCourses="ngForm">
+        <div class="form-group" ngModelGroup="courses">
+          <div *ngFor="let c of courses" class="form-control container">
+            <input type="checkbox" ngModel name="{{c.code}}"> {{ c.name }} | {{ c.code }}
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-success">Añadir</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -18,12 +18,14 @@
     when the start semester button is pressed-->
 <div class="row">
   <div class="col"></div>
-  <div class="col-auto text-center">
-    <button
-      *ngIf="!isStartSemester"
-      class="btn my-initialize-semester-button"
-      (click)="onStartSemester()">Inicializar Nuevo Semestre
-    </button>
+  <div class="col-auto">
+    <div class="text-center">
+      <button
+        *ngIf="!isStartSemester"
+        class="btn my-initialize-semester-button"
+        (click)="onStartSemester()">Inicializar Nuevo Semestre
+      </button>
+    </div>
     <app-course-management *ngIf="!isStartSemester"></app-course-management>
     <app-start-semester *ngIf="isStartSemester"></app-start-semester>
   </div>
