@@ -21,7 +21,7 @@ export class CourseManagementComponent implements OnInit {
   onCreateCourse(): void {
     console.log(this.newCourseForm.value.name);
 
-    /*
+    /* COMS!
       Aca quiero que se anhada un nuevo curso al server, y actualizar a la lista
       de cursos disponibles, mientras tanto estare anhadiendo los cursos nuevos
       a la lista de cursos disponibles
