@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Course} from '../../../models/course.model';
 import {AdminService} from '../../admin.service';
 import {NgForm} from '@angular/forms';
@@ -10,7 +10,7 @@ import {Professor} from '../../../models/professor.model';
   templateUrl: './start-semester.component.html',
   styleUrls: ['./start-semester.component.css']
 })
-export class StartSemesterComponent implements OnInit {
+export class StartSemesterComponent implements OnInit{
   @ViewChild('createSemester') createSemesterForm: NgForm;
   @ViewChild('selectCourses') selectCoursesForm: NgForm;
   @ViewChild('selectGroups') selectGroupsForm: NgForm;
@@ -63,5 +63,9 @@ export class StartSemesterComponent implements OnInit {
 
   onSelectProfessors(): void {
     this.step++;
+  }
+
+  onReturn(): void {
+    this.aService.isStartSemester = false;
   }
 }

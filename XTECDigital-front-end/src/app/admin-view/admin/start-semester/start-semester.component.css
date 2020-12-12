@@ -5,8 +5,10 @@
 }
 
 .my-step-progress-button {
+  /*
   color: white;
   background-color: crimson;
+  */
   border: brown 3px solid;
   margin-top: 10px;
 }

@@ -1,7 +1,8 @@
 <div class="text-center">
   <div
     class="btn my-step-progress-button">
-    Paso {{step}} de 5
+    <h5>Inicializar un nuevo semestre</h5>
+    Paso {{step}} de 6
   </div>
 </div>
 
@@ -77,18 +78,18 @@
 <div *ngIf="step === 3" class="card my-start-semester-card">
   <div class="card-body">
     <h5 class="card-title">
-      Escoger # de grupo para los cursos del nuevo semestre
+      Escoger número de grupo para los cursos
     </h5>
     <div class="card-text">
       <form (ngSubmit)="onSelectGroups()" #selectGroups="ngForm">
         <div class="form-group" ngModelGroup="courses">
           <div class="row" style="margin-bottom: 10px">
-            <div class="col">
-              <div *ngFor="let c of coursesList" style="margin-bottom: 15px">
+            <div class="col-auto">
+              <div class="card-text" *ngFor="let c of coursesList" style="margin-bottom: 25px">
                 {{ c.name }} | {{ c.code }}
               </div>
             </div>
-            <div class="col">
+            <div class="col-auto">
               <div *ngFor="let c of coursesList" class="container" style="margin-bottom: 10px">
                 <input
                   type="number"
@@ -134,4 +135,37 @@
       </form>
     </div>
   </div>
+</div>
+
+<div *ngIf="step === 5" class="card my-start-semester-card">
+  <div class="card-body">
+    <h5 class="card-title">
+      Escoger Profesores Para Los Cursos
+    </h5>
+    <div class="card-text">
+      <form (ngSubmit)="onSelectProfessors()" #selectProfessors="ngForm">
+        <div *ngFor="let c of coursesChosen" class="form-group" ngModelGroup="{{ c.code }}">
+          <div style="padding: 2px">
+            <strong>{{ c.name }}</strong>
+          </div>
+          <div *ngFor="let p of professors" class="form-control container" style="margin-bottom: 10px">
+            <input type="checkbox" ngModel name="{{ p.ssn }}"> {{ p.name }} | {{ p.ssn }} | {{ p.email }}
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-success">Seleccionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="step === 5" class="text-center">
+  <a
+    class="btn my-step-progress-button"
+    (click)="onReturn()">
+    Regresar
+  </a>
 </div>

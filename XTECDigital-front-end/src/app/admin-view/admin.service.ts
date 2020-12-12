@@ -6,6 +6,8 @@ import {Professor} from '../models/professor.model';
   providedIn: 'root'
 })
 export class AdminService {
+  isStartSemester: boolean;
+
   // COURSE MANAGEMENT
 
   /* COMS!
