@@ -43,5 +43,18 @@ export class AdminService {
       )
     ];
     this.coursesActive = this.coursesAvailable;
+
+    this.professorsList = [
+      new Professor(
+        '123654987',
+        'San Toñito',
+        'agonzalest@itcr.ac.cr'
+      ),
+      new Professor(
+        '456123789',
+        'El Nog',
+        'nog@itcr.ac.cr'
+      )
+    ];
   }
 }

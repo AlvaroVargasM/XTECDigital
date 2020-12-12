@@ -14,6 +14,7 @@ export class StartSemesterComponent implements OnInit {
   @ViewChild('createSemester') createSemesterForm: NgForm;
   @ViewChild('selectCourses') selectCoursesForm: NgForm;
   @ViewChild('selectGroups') selectGroupsForm: NgForm;
+  @ViewChild('selectProfessors') selectProfessorsForm: NgForm;
   step: number;
   coursesList: Course[];
   coursesChosen: Course[];
@@ -57,6 +58,10 @@ export class StartSemesterComponent implements OnInit {
   }
 
   onSelectGroups(): void {
+    this.step++;
+  }
+
+  onSelectProfessors(): void {
     this.step++;
   }
 }
