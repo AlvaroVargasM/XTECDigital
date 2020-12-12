@@ -1,4 +1,11 @@
-<div *ngIf="step === 1" class="card my-start-semester-card">
+<div class="text-center">
+  <div
+    class="btn my-step-progress-button">
+    Paso {{step}} de 5
+  </div>
+</div>
+
+<div *ngIf="step === 1" class="card my-start-semester-card text-center">
   <div class="card-body">
     <h5 class="card-title">
       Escoger Semestre Para Iniciar
@@ -53,13 +60,52 @@
     <div class="card-text">
       <form (ngSubmit)="onSelectCourses()" #selectCourses="ngForm">
         <div class="form-group" ngModelGroup="courses">
-          <div *ngFor="let c of coursesList" class="form-control container">
+          <div *ngFor="let c of coursesList" class="form-control container" style="margin-bottom: 10px">
             <input type="checkbox" ngModel name="{{c.code}}"> {{ c.name }} | {{ c.code }}
           </div>
         </div>
-        <button
-          type="submit"
-          class="btn btn-success">Añadir</button>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-success">Añadir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="step === 3" class="card my-start-semester-card">
+  <div class="card-body">
+    <h5 class="card-title">
+      Escoger # de grupo para los cursos del nuevo semestre
+    </h5>
+    <div class="card-text">
+      <form (ngSubmit)="onSelectGroups()" #selectGroups="ngForm">
+        <div class="form-group" ngModelGroup="courses">
+          <div class="row" style="margin-bottom: 10px">
+            <div class="col">
+              <div *ngFor="let c of coursesList" style="margin-bottom: 15px">
+                {{ c.name }} | {{ c.code }}
+              </div>
+            </div>
+            <div class="col">
+              <div *ngFor="let c of coursesList" class="container" style="margin-bottom: 10px">
+                <input
+                  type="number"
+                  class="form-control"
+                  ngModel
+                  required
+                  name="{{c.code}}">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!selectGroups.valid">Escoger</button>
+        </div>
       </form>
     </div>
   </div>

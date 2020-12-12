@@ -3,6 +3,7 @@ import {Course} from '../../../models/course.model';
 import {AdminService} from '../../admin.service';
 import {NgForm} from '@angular/forms';
 import {Semester} from '../../../models/semester.model';
+import {Professor} from '../../../models/professor.model';
 
 @Component({
   selector: 'app-start-semester',
@@ -11,11 +12,13 @@ import {Semester} from '../../../models/semester.model';
 })
 export class StartSemesterComponent implements OnInit {
   @ViewChild('createSemester') createSemesterForm: NgForm;
-  @ViewChild('selectCourses') SelectCoursesForm: NgForm;
+  @ViewChild('selectCourses') selectCoursesForm: NgForm;
+  @ViewChild('selectGroups') selectGroupsForm: NgForm;
   step: number;
   coursesList: Course[];
   coursesChosen: Course[];
-  selectedList: string[] = [];
+  selectedCoursesList: string[] = [];
+  professors: Professor[];
 
   constructor(private aService: AdminService) {
     this.step = 1;
@@ -24,6 +27,7 @@ export class StartSemesterComponent implements OnInit {
   ngOnInit(): void {
     this.coursesList = this.aService.coursesAvailable;
     this.coursesChosen = this.aService.coursesActive;
+    this.professors = this.aService.professorsList;
   }
 
   onCreateSemester(): void {
@@ -38,18 +42,21 @@ export class StartSemesterComponent implements OnInit {
   }
 
   onSelectCourses(): void {
-    for (const property in this.SelectCoursesForm.value.courses) {
-      if (this.SelectCoursesForm.value.courses[property]) {
-        this.selectedList.push(property.toString());
+    this.step++;
+
+    for (const property in this.selectCoursesForm.value.courses) {
+      if (this.selectCoursesForm.value.courses[property]) {
+        this.selectedCoursesList.push(property.toString());
       }
     }
 
     /* COMS!
       Esta lista de codigos es de los cursos escogidos, se deberia enviar
      */
-    console.log(this.selectedList);
+    console.log(this.selectedCoursesList);
   }
 
-
-
+  onSelectGroups(): void {
+    this.step++;
+  }
 }
