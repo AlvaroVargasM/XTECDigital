@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Course} from '../models/course.model';
 import {Professor} from '../models/professor.model';
+import {Student} from '../models/student.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,8 @@ export class AdminService {
   coursesActive: Course[];
 
   professorsList: Professor[];
+
+  studentsList: Student[];
 
   constructor() {
     this.coursesAvailable = [
@@ -56,6 +59,21 @@ export class AdminService {
         '456123789',
         'El Nog',
         'nog@itcr.ac.cr'
+      )
+    ];
+
+    this.studentsList = [
+      new Student(
+        '2018085151',
+        'Alvaro Vargas',
+        'valvaro707@gmail.com',
+        '85787059'
+      ),
+      new Student(
+        '2016085151',
+        'Joey Molina',
+        'upupup@gmail.com',
+        '96528453'
       )
     ];
   }

@@ -140,16 +140,16 @@
 <div *ngIf="step === 5" class="card my-start-semester-card">
   <div class="card-body">
     <h5 class="card-title">
-      Escoger Profesores Para Los Cursos
+      Escoger Estudiantes Para Los Cursos
     </h5>
     <div class="card-text">
-      <form (ngSubmit)="onSelectProfessors()" #selectProfessors="ngForm">
+      <form (ngSubmit)="onSelectStudents()" #selectStudents="ngForm">
         <div *ngFor="let c of coursesChosen" class="form-group" ngModelGroup="{{ c.code }}">
           <div style="padding: 2px">
             <strong>{{ c.name }}</strong>
           </div>
-          <div *ngFor="let p of professors" class="form-control container" style="margin-bottom: 10px">
-            <input type="checkbox" ngModel name="{{ p.ssn }}"> {{ p.name }} | {{ p.ssn }} | {{ p.email }}
+          <div *ngFor="let s of students" class="form-control container" style="margin-bottom: 10px">
+            <input type="checkbox" ngModel name="{{ s.collegeId }}"> {{ s.name }} | {{ s.collegeId }}
           </div>
         </div>
         <div class="text-center">
@@ -160,12 +160,4 @@
       </form>
     </div>
   </div>
-</div>
-
-<div *ngIf="step === 5" class="text-center">
-  <a
-    class="btn my-step-progress-button"
-    (click)="onReturn()">
-    Regresar
-  </a>
 </div>

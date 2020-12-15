@@ -4,6 +4,7 @@ import {AdminService} from '../../admin.service';
 import {NgForm} from '@angular/forms';
 import {Semester} from '../../../models/semester.model';
 import {Professor} from '../../../models/professor.model';
+import {Student} from '../../../models/student.model';
 
 @Component({
   selector: 'app-start-semester',
@@ -15,11 +16,14 @@ export class StartSemesterComponent implements OnInit{
   @ViewChild('selectCourses') selectCoursesForm: NgForm;
   @ViewChild('selectGroups') selectGroupsForm: NgForm;
   @ViewChild('selectProfessors') selectProfessorsForm: NgForm;
+  @ViewChild('selectStudents') selectStudentsForm: NgForm;
+
   step: number;
   coursesList: Course[];
   coursesChosen: Course[];
   selectedCoursesList: string[] = [];
   professors: Professor[];
+  students: Student[];
 
   constructor(private aService: AdminService) {
     this.step = 1;
@@ -29,6 +33,7 @@ export class StartSemesterComponent implements OnInit{
     this.coursesList = this.aService.coursesAvailable;
     this.coursesChosen = this.aService.coursesActive;
     this.professors = this.aService.professorsList;
+    this.students = this.aService.studentsList;
   }
 
   onCreateSemester(): void {
@@ -65,7 +70,7 @@ export class StartSemesterComponent implements OnInit{
     this.step++;
   }
 
-  onReturn(): void {
-    this.aService.isStartSemester = false;
+  onSelectStudents(): void {
+    this.step = 1;
   }
 }
