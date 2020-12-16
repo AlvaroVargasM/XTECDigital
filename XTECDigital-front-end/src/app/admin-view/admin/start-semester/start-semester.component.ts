@@ -25,8 +25,10 @@ export class StartSemesterComponent implements OnInit{
   professors: Professor[];
   students: Student[];
 
+  profes: { course: string, plist: string[] };
+
   constructor(private aService: AdminService) {
-    this.step = 1;
+    this.step = 4;
   }
 
   ngOnInit(): void {
@@ -42,9 +44,7 @@ export class StartSemesterComponent implements OnInit{
     /* COMS!
       Esta informacion se refiere a la del nuevo semestre, se deberia enviar este objeto
      */
-    console.log(new Semester(this.createSemesterForm.value.year, this.createSemesterForm.value.period).period);
-
-    this.ngOnInit();
+    console.log(this.createSemesterForm.value);
   }
 
   onSelectCourses(): void {
@@ -64,13 +64,31 @@ export class StartSemesterComponent implements OnInit{
 
   onSelectGroups(): void {
     this.step++;
+    console.log(this.selectGroupsForm.value);
   }
 
   onSelectProfessors(): void {
     this.step++;
+
+    for (const course in this.selectProfessorsForm.value) {
+      console.log([course].toString());
+      for (const professor in this.selectProfessorsForm.value[course]) {
+        if (this.selectProfessorsForm.value[course][professor]) {
+          console.log([professor].toString());
+        }
+      }
+    }
   }
 
   onSelectStudents(): void {
     this.step = 1;
+    for (const course in this.selectStudentsForm.value) {
+      console.log([course].toString());
+      for (const student in this.selectStudentsForm.value[course]) {
+        if (this.selectStudentsForm.value[course][student]) {
+          console.log([student].toString());
+        }
+      }
+    }
   }
 }
