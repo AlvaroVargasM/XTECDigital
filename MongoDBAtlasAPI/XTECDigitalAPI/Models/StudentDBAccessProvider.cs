@@ -6,13 +6,14 @@ using MongoDB.Driver;
 
 namespace XTECDigitalAPI.Models
 {
-    public class MongoDBAccessProvider
+    public class StudentDBAccessProvider
     {
         public static string MongoConnection = "mongodb+srv://SMZ19:SMZ19@xtecdigitalcluster.conak.mongodb.net/XTECDigitalDB?retryWrites=true&w=majority";
         public static string MongoDatabase = "XTECDigitalDB";
         private readonly IMongoCollection<Student> _students;
+        EncryptAndDecryptService encrypAnddecrypS = new EncryptAndDecryptService();
 
-        public MongoDBAccessProvider()
+        public StudentDBAccessProvider()
         {
             var client = new MongoClient(MongoConnection);
             var database = client.GetDatabase(MongoDatabase);
@@ -38,6 +39,14 @@ namespace XTECDigitalAPI.Models
 
         public void Remove(string id) =>
             _students.DeleteOne(student => student._id == id);
+
+        public bool verifyCredentials(LogInAndOutMessage msg) {
+
+            msg.password = encrypAnddecrypS.encrypts(msg.password);
+            bool query = _students.AsQueryable<Student>().Any(s => s._id == msg.id && s.password == msg.password);
+            return query;
+
+        }
     }
 
 

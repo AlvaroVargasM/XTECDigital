@@ -220,7 +220,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\MongoDBAccessProvider.cs" />
+    <Compile Include="Models\EncryptAndDecryptService.cs" />
+    <Compile Include="Models\LogInAndOutMessage.cs" />
+    <Compile Include="Models\StudentDBAccessProvider.cs" />
     <Compile Include="Models\Professor.cs" />
     <Compile Include="Models\ProfessorDBAccessProvider.cs" />
     <Compile Include="Models\Student.cs" />

@@ -24,14 +24,20 @@ namespace XTECDigitalAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                Guid obj = Guid.NewGuid();
-                professor._id = obj.ToString();
+                
                 _professorAccess.Create(professor);
                 return Ok();
             }
             return BadRequest();
 
 
+        }
+        // Post: api/Student/LogIn
+        [HttpPost]
+        public bool LogIn([FromBody] LogInAndOutMessage msg)
+        {
+
+            return _professorAccess.verifyCredentials(msg);
         }
     }
 }

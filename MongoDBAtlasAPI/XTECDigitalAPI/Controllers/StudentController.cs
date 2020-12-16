@@ -6,18 +6,19 @@ using System.Net.Http;
 using System.Web.Http;
 using XTECDigitalAPI.Models;
 
+
 namespace XTECDigitalAPI.Controllers
 {
     public class StudentController : ApiController
     {
-        private readonly MongoDBAccessProvider _mongoDBAccess = new MongoDBAccessProvider();
+        private readonly StudentDBAccessProvider _studentDBAccess = new StudentDBAccessProvider();
+        private EncryptAndDecryptService encryptandecryptS = new EncryptAndDecryptService();
         
         
         // GET: api/Student
         public IEnumerable<Student> Get()
         {
-            Console.WriteLine("Hola");
-            return _mongoDBAccess.Get();
+            return _studentDBAccess.Get();
         }
 
         // GET: api/Student/5
@@ -31,10 +32,9 @@ namespace XTECDigitalAPI.Controllers
         public IHttpActionResult CreateAStudent([FromBody] Student student)
         {
             if (ModelState.IsValid) {
-                
-                Guid obj = Guid.NewGuid();
-                student._id = obj.ToString();
-                _mongoDBAccess.Create(student);
+
+                student.password = encryptandecryptS.encrypts(student.password);
+                _studentDBAccess.Create(student);
                 return Ok();
             }
             return BadRequest();
@@ -47,13 +47,14 @@ namespace XTECDigitalAPI.Controllers
         public IHttpActionResult Update([FromBody] Student studentIn)
         {
            
-            var student = _mongoDBAccess.Get(studentIn._id);
+            var student = _studentDBAccess.Get(studentIn._id);
+            
             if (student == null)
             {
 
                 return NotFound();
             }
-            _mongoDBAccess.Update(studentIn);
+            _studentDBAccess.Update(studentIn);
             return Ok();
 
         }
@@ -61,13 +62,20 @@ namespace XTECDigitalAPI.Controllers
         // DELETE: api/Student/5
         public IHttpActionResult Delete(string id)
         {
-            var student = _mongoDBAccess.Get(id);
+            var student = _studentDBAccess.Get(id);
             if (student == null)
             {
                 return NotFound();
             }
-            _mongoDBAccess.Remove(id);
+            _studentDBAccess.Remove(id);
             return Ok();
+        }
+        // Post: api/Student/LogIn
+        [HttpPost]
+        public bool LogIn([FromBody] LogInAndOutMessage msg)
+        {
+
+            return _studentDBAccess.verifyCredentials(msg);
         }
     }
 }

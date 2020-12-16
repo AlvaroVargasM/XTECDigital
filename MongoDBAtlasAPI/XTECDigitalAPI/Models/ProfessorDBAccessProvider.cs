@@ -11,6 +11,7 @@ namespace XTECDigitalAPI.Models
         public static string MongoConnection = "mongodb+srv://SMZ19:SMZ19@xtecdigitalcluster.conak.mongodb.net/XTECDigitalDB?retryWrites=true&w=majority";
         public static string MongoDatabase = "XTECDigitalDB";
         private readonly IMongoCollection<Professor> _professor;
+        EncryptAndDecryptService encrypAnddecrypS = new EncryptAndDecryptService();
 
         public ProfessorDBAccessProvider()
         {
@@ -21,12 +22,21 @@ namespace XTECDigitalAPI.Models
         }
 
         public List<Professor> Get() =>
-            _professor.Find<Professor>(student => true).ToList();
+            _professor.Find<Professor>(professor => true).ToList();
 
         public Professor Create(Professor professor)
         {
+            professor.password = encrypAnddecrypS.encrypts(professor.password);
             _professor.InsertOne(professor);
             return professor;
+        }
+        public bool verifyCredentials(LogInAndOutMessage msg)
+        {
+
+            msg.password = encrypAnddecrypS.encrypts(msg.password);
+            bool query = _professor.AsQueryable<Professor>().Any(p => p._id == msg.id && p.password == msg.password);
+            return query;
+
         }
     }
 }
