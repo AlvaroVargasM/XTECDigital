@@ -11,7 +11,8 @@ import {FormsModule} from '@angular/forms';
 import { CourseManagementComponent } from './admin-view/admin/course-management/course-management.component';
 import { StartSemesterComponent } from './admin-view/admin/start-semester/start-semester.component';
 import { UploadSemesterComponent } from './admin-view/admin/upload-semester/upload-semester.component';
-import { RubricManagementComponent } from './professor-view/professor/rubric-management/rubric-management.component';
+import {RubricManagementComponent} from './professor-view/professor/rubric-management/rubric-management.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },

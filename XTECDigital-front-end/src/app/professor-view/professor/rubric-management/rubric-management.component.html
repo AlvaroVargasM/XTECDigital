@@ -1,0 +1,87 @@
+<div class="card my-card">
+  <div class="card-body">
+    <h5 class="card-title">
+      Gestion de Rubros
+    </h5>
+    <br>
+    <div class="card-text">
+      <h5>Rubros Actuales</h5>
+      <div *ngFor="let r of currentRubrics">
+        {{ r.name }} - {{ r.percentage }}%
+      </div>
+      <br>
+      <h5>Modificar Cursos</h5>
+      <div class="row">
+        <div class="col"><button class="btn" (click)="onModify()">Editar</button></div>
+        <div class="col"><button class="btn" (click)="onAdd()">Agregar</button></div>
+        <div class="col"><button class="btn" (click)="onDelete()">Eliminar</button></div>
+      </div>
+      <form *ngIf="isModify" (ngSubmit)="onSaveRubrics()" #modifyRubric="ngForm">
+        <div *ngIf="!isDelete">
+          <div *ngFor="let r of currentRubrics" class="container">
+            <div class="form-row">
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name_{{ currentRubrics.indexOf(r) }}"
+                  required
+                  [ngModel]=r.name>
+              </div>
+              <div class="col">
+                <input
+                  type="number"
+                  class="form-control"
+                  name="percentage_{{ currentRubrics.indexOf(r) }}"
+                  required
+                  [ngModel]=r.percentage>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div *ngIf="isAdd" class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                required>
+            </div>
+            <div class="col">
+              <input
+                type="number"
+                class="form-control"
+                name="percentage"
+                required>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="isDelete" class="container">
+          <div *ngFor="let x of arr" class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                name="name_{{ x }}"
+                required>
+            </div>
+            <div class="col">
+              <input
+                type="number"
+                class="form-control"
+                name="percentage_{{ x }}"
+                required>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="btn btn-success"
+          type="submit">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>
