@@ -64,12 +64,21 @@ export class StartSemesterComponent implements OnInit{
 
   onSelectGroups(): void {
     this.step++;
+
+    /* COMS!
+      Aca deberiamos mandar los numero de grupo para los cursos que van a ser
+      escogidos en el paso anterior
+     */
     console.log(this.selectGroupsForm.value);
   }
 
   onSelectProfessors(): void {
     this.step++;
 
+    /* COMS!
+      Aca deberiamos mandar las cedulas de los profes que van a ensehar
+      los cursos seleccionados
+     */
     for (const course in this.selectProfessorsForm.value) {
       console.log([course].toString());
       for (const professor in this.selectProfessorsForm.value[course]) {
@@ -82,6 +91,11 @@ export class StartSemesterComponent implements OnInit{
 
   onSelectStudents(): void {
     this.step = 1;
+
+    /* COMS!
+      Aca mandamos de manera similar a como mandamos los profes, el
+      codigo del curso y los carnet de los estudiantes asociados a dicho codigo
+     */
     for (const course in this.selectStudentsForm.value) {
       console.log([course].toString());
       for (const student in this.selectStudentsForm.value[course]) {

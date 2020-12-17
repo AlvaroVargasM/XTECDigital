@@ -53,6 +53,11 @@ export class RubricManagementComponent implements OnInit {
 
     console.log(this.modifyRubricForm.value);
 
+    /* COMS!
+      En esta parte mandamos los nuevos rubros al grupo que tengamos seleccionado
+      y se deberia actualizar la tabla de rubrics de dicho grupo con esta nueva info
+     */
+
     this.modifyRubricForm.reset();
     this.ngOnInit();
   }
