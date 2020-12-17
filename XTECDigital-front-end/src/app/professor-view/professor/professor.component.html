@@ -13,13 +13,46 @@
   </div>
 </nav>
 
-<div class="row">
-  <div class="col">
+<!--GROUP SELECTION-->
+<div *ngIf="!selectedGroup">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-auto">
+      <div class="card my-card">
+        <div class="card-body">
+          <h5 class="card-title">Grupos Disponibles</h5>
+        </div>
+        <div class="card-text">
+          <div *ngFor="let g of availableGroups" class="text-center">
+            <button
+            class="btn my-button"
+            (click)="onGroupSelect(g)">
+              Grupo: {{ g.gNumber  }} <br>
+              Curso: {{ g.cCode }} <br>
+              Semestre: {{ g.period }} | {{ g.year }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
   </div>
-  <div class="col-auto">
-    <app-rubric-management></app-rubric-management>
-    <app-news-management></app-news-management>
+</div>
+
+<!--COMPONENTS TO DISPLAY AFTER SELECTING A GROUP-->
+<div *ngIf="selectedGroup">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-auto">
+      <app-rubric-management></app-rubric-management>
+    </div>
+    <div class="col"></div>
   </div>
-  <div class="col">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-auto">
+      <app-news-management></app-news-management>
+    </div>
+    <div class="col"></div>
   </div>
 </div>

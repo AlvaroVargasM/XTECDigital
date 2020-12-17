@@ -13,6 +13,7 @@ import { StartSemesterComponent } from './admin-view/admin/start-semester/start-
 import { UploadSemesterComponent } from './admin-view/admin/upload-semester/upload-semester.component';
 import {RubricManagementComponent} from './professor-view/professor/rubric-management/rubric-management.component';
 import { NewsManagementComponent } from './professor-view/professor/news-management/news-management.component';
+import { AssignEvaluationComponent } from './professor-view/professor/assign-evaluation/assign-evaluation.component';
 
 
 const appRoutes: Routes = [
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     StartSemesterComponent,
     UploadSemesterComponent,
     RubricManagementComponent,
-    NewsManagementComponent
+    NewsManagementComponent,
+    AssignEvaluationComponent
   ],
   imports: [
     BrowserModule,
