@@ -12,6 +12,7 @@ import { CourseManagementComponent } from './admin-view/admin/course-management/
 import { StartSemesterComponent } from './admin-view/admin/start-semester/start-semester.component';
 import { UploadSemesterComponent } from './admin-view/admin/upload-semester/upload-semester.component';
 import {RubricManagementComponent} from './professor-view/professor/rubric-management/rubric-management.component';
+import { NewsManagementComponent } from './professor-view/professor/news-management/news-management.component';
 
 
 const appRoutes: Routes = [
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     CourseManagementComponent,
     StartSemesterComponent,
     UploadSemesterComponent,
-    RubricManagementComponent
+    RubricManagementComponent,
+    NewsManagementComponent
   ],
   imports: [
     BrowserModule,

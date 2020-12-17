@@ -28,7 +28,7 @@ export class StartSemesterComponent implements OnInit{
   profes: { course: string, plist: string[] };
 
   constructor(private aService: AdminService) {
-    this.step = 4;
+    this.step = 1;
   }
 
   ngOnInit(): void {

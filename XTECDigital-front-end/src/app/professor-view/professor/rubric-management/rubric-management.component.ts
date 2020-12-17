@@ -47,14 +47,13 @@ export class RubricManagementComponent implements OnInit {
   }
 
   onSaveRubrics(): void {
-    this.modifyRubricForm.reset();
-
     this.isModify = false;
     this.isDelete = false;
     this.isAdd = false;
 
-    console.log(this.modifyRubricForm);
+    console.log(this.modifyRubricForm.value);
 
+    this.modifyRubricForm.reset();
     this.ngOnInit();
   }
 
