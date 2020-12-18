@@ -10,9 +10,9 @@ namespace RelationalDB_RESTAPI.Utils
 {
     public static class Connector
     {
-        public static string connectionString = "Data Source=jongs.mynetgear.com,1433; " +
-            "Network Library = DBMSSOCN; Initial Catalog = XTecDigital-db; " +
-            "User ID = REST-1; Password=fVmOwUzSOd{n4#Ltf";
+        public static string connectionString = "Data Source=dxnium.database.windows.net,1433; " +
+            "Network Library = DBMSSOCN; Initial Catalog = XTECDigital; " +
+            "User ID = dxnium; Password=Dumanamonge9921";
 
         public static List<Semester> getSemesters()
         {
