@@ -151,5 +151,40 @@ namespace RelationalDB_RESTAPI.Utils
                 }
             }
         }
+
+        public static List<Group> getGroupsByProfesor(string ssn)
+        {
+            using (SqlConnection connection =
+                  new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand command =
+                            new SqlCommand("GetGroupsByProfessor", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("professorSSN", ssn);
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    List<Group> groups = new List<Group>();
+
+                    while (reader.Read())
+                    {
+                        groups.Add(new Group((int)reader["number_group"], (int)reader["year_semester"], (string)reader["period_semester"], (string)reader["code_course"],
+                            "None"));
+                    }
+
+                    connection.Close();
+
+                    return groups;
+                }
+                catch (Exception)
+                {
+                    connection.Close();
+                    return null;
+                }
+            }
+        }
     }
 }
