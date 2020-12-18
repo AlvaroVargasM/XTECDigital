@@ -7,12 +7,10 @@ namespace XTECDigitalAPI.Models
 {
     public class Student
     {
-        public string _id { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string email { get; set; }
-        public int telephoneNumber { get; set; }
-
-        public string password { get; set; }
+        public string _id {get; set;}
+        public string name {get; set;}
+        public string email {get; set;}
+        public int phone {get; set;}
+        public string password {get; set;}
     }
 }
