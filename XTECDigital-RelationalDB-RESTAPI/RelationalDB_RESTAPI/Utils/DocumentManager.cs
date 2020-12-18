@@ -10,8 +10,24 @@ namespace RelationalDB_RESTAPI.Utils
     public static class DocumentManager
     {
         public static string fileManagerRoot = AppDomain.CurrentDomain.BaseDirectory + "/Database";
-        public static string fileDefaults = AppDomain.CurrentDomain.BaseDirectory + "/Configs/defaults.txt";
-        public static List<string> templateFolder;
+        public static string fileDefaults = AppDomain.CurrentDomain.BaseDirectory + "/Configurations/defaults.txt";
+        
+        public static bool startBuildUp()
+        {
+            try
+            {
+                List<String> defaults = new List<string>();
+
+                CreateRootFolderForGroup();
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
         
         public static bool checkExistence(string path)
         {

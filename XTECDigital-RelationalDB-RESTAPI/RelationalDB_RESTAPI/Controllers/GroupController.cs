@@ -55,5 +55,19 @@ namespace RelationalDB_RESTAPI.Controllers
 
             return Ok(groups);
         }
+
+        [HttpPost]
+        [Route("Groups/GenerateDatabase")]
+        public IHttpActionResult generateDatabase()
+        {
+            bool done = DocumentManager.startBuildUp();
+            
+            if(done)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }
