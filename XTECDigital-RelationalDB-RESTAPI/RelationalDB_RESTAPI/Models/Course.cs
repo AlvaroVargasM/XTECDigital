@@ -8,8 +8,16 @@ namespace RelationalDB_RESTAPI.Models
     public class Course
     {
         public string code { get; set; }
-        public string Name { get; set; }
-        public int Credits { get; set; }
-        public string degree { get; set; }
+        public string name { get; set; }
+        public int credits { get; set; }
+        public string school { get; set; }
+
+        public Course(string code, string name, int credits, string school)
+        {
+            this.code = code;
+            this.name = name;
+            this.credits = credits;
+            this.school = school;
+        }
     }
 }

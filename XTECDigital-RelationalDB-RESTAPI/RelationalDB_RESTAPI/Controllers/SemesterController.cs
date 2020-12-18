@@ -1,4 +1,5 @@
 ﻿using RelationalDB_RESTAPI.Models;
+using RelationalDB_RESTAPI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,21 +13,20 @@ namespace RelationalDB_RESTAPI.Controllers
     {
         [HttpGet]
         [Route("Semesters")]
-        public List<Semester> getSemesters()
+        public IHttpActionResult getSemesters()
         {
-            /*List<Semester> semesters = Connector.getSemesters();
+            List<Semester> semesters = Connector.getSemesters();
             if(semesters == null)
             {
                 return null;
             }
 
-            return semesters;*/
-            return null;
+            return Ok(semesters);
         }
 
         [HttpGet]
         [Route("Semester/{year}/{period}/Courses")]
-        public List<Course> getCoursesforSemester(int year, string period)
+        public IHttpActionResult getCoursesforSemester(int year, string period)
         {
 
             /*List<Course> courses = Connector.getCoursesBySemester(year, period);
@@ -41,7 +41,7 @@ namespace RelationalDB_RESTAPI.Controllers
 
         [HttpGet]
         [Route("Semester/{year}/{period}/{courseCode}/Groups")]
-        public List<Group> getGroupsByCourse(int year, string period, string courseCode)
+        public IHttpActionResult getGroupsByCourse(int year, string period, string courseCode)
         {
 
             /*List<Group> groups = Connector.getGroupsBySemesterANDCourse(year, period, courseCode);

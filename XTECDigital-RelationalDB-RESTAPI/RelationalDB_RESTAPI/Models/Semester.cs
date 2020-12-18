@@ -7,7 +7,13 @@ namespace RelationalDB_RESTAPI.Models
 {
     public class Semester
     {
-        public string year { get; set; }
+        public int year { get; set; }
         public string period { get; set; }
+
+        public Semester(int year, string period)
+        {
+            this.year = year;
+            this.period = period;
+        }
 }
 }
