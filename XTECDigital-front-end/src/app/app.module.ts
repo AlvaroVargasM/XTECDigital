@@ -14,6 +14,7 @@ import { UploadSemesterComponent } from './admin-view/admin/upload-semester/uplo
 import {RubricManagementComponent} from './professor-view/professor/rubric-management/rubric-management.component';
 import { NewsManagementComponent } from './professor-view/professor/news-management/news-management.component';
 import { AssignEvaluationComponent } from './professor-view/professor/assign-evaluation/assign-evaluation.component';
+import { TeamManagementComponent } from './professor-view/professor/team-management/team-management.component';
 
 
 const appRoutes: Routes = [
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     UploadSemesterComponent,
     RubricManagementComponent,
     NewsManagementComponent,
-    AssignEvaluationComponent
+    AssignEvaluationComponent,
+    TeamManagementComponent
   ],
   imports: [
     BrowserModule,

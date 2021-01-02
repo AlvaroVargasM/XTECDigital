@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Rubric} from '../models/rubric.model';
 import {News} from '../models/news.model';
 import {Group} from '../models/group.model';
+import {Student} from '../models/student.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class ProfessorService {
   groups: Group[];
   rubrics: Rubric[];
   news: News[];
+  gStudents: Student[];
+  teamsNumbers: number[];
 
   constructor() {
     this.currentGroup = null;
