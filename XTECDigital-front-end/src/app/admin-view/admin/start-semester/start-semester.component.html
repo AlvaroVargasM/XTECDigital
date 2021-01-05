@@ -1,3 +1,4 @@
+<!--Progress-->
 <div class="text-center">
   <div
     class="btn my-step-progress-button">
@@ -6,6 +7,7 @@
   </div>
 </div>
 
+<!--First Step: Choose semester-->
 <div *ngIf="step === 1" class="card my-start-semester-card text-center">
   <div class="card-body">
     <h5 class="card-title">
@@ -53,6 +55,7 @@
   </div>
 </div>
 
+<!--Second Step: Choose courses-->
 <div *ngIf="step === 2" class="card my-start-semester-card">
   <div class="card-body">
     <h5 class="card-title">
@@ -75,6 +78,7 @@
   </div>
 </div>
 
+<!--Third Step: Choose group number for the courses-->
 <div *ngIf="step === 3" class="card my-start-semester-card">
   <div class="card-body">
     <h5 class="card-title">
@@ -112,6 +116,7 @@
   </div>
 </div>
 
+<!--Fourth Step: Choose professors for the chosen courses-->
 <div *ngIf="step === 4" class="card my-start-semester-card">
   <div class="card-body">
     <h5 class="card-title">
@@ -137,6 +142,7 @@
   </div>
 </div>
 
+<!--Fifth Step: Choose students for the chosen courses-->
 <div *ngIf="step === 5" class="card my-start-semester-card">
   <div class="card-body">
     <h5 class="card-title">

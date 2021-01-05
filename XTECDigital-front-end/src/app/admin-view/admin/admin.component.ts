@@ -6,6 +6,10 @@ import {AdminService} from '../admin.service';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
+
+/**
+ * This component is in charge of displaying the admin view
+ */
 export class AdminComponent implements OnInit {
 
   constructor(private aService: AdminService) {

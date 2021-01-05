@@ -22,9 +22,10 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     console.log(this.loginForm.value.username);
-    /*
-      Aca quiero que se llame a una funcion que valide con el api el input, y nos de una respuesta para saber
-      si estuvo mal el input del cliente, o si estuvo bien para donde tengo que mover la ruta actual
+    /* COMS!
+      Aca se deberia llamar api y enviar el input del login, y nos de una respuesta para saber
+      si estuvo mal el input del cliente, o si estuvo bien saber para donde tengo que mover la ruta actual
+      ademas si es estudiante o professor se deberia guardar la informacion de quien esta en session actualmente
      */
 
   }

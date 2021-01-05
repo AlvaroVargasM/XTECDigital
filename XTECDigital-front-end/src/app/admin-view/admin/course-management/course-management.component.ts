@@ -23,7 +23,7 @@ export class CourseManagementComponent implements OnInit {
 
     /* COMS!
       Aca quiero que se anhada un nuevo curso al server, y actualizar a la lista
-      de cursos disponibles, mientras tanto estare anhadiendo los cursos nuevos
+      de cursos disponibles simultaneamente, mientras tanto estare anhadiendo los cursos nuevos
       a la lista de cursos disponibles
      */
     this.aService.coursesAvailable.push(

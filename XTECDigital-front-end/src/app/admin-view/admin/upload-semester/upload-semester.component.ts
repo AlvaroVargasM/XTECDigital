@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-semester',
@@ -6,16 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upload-semester.component.css']
 })
 export class UploadSemesterComponent implements OnInit {
-  semesterFile = null;
+  semesterFile: File = null;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   onSelectSemesterFile(event): void {
-    this.semesterFile = event.target.files[0];
+    console.log(event);
+    this.semesterFile = <File>event.target.files[0];
   }
 
-  onUploadSemesterFile(): void {}
+  onUploadSemesterFile(): void {
+    const fd = new FormData();
+    fd.append('semesterExcel', this.semesterFile, this.semesterFile.name)
+    this.http.post('', fd).subscribe(
+      res => {
+        console.log(res);
+      }
+    );
+  }
 }

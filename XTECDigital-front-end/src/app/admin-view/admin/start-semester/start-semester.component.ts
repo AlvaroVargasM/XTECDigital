@@ -11,6 +11,10 @@ import {Student} from '../../../models/student.model';
   templateUrl: './start-semester.component.html',
   styleUrls: ['./start-semester.component.css']
 })
+
+/**
+ * This component is in charge of starting a new semester
+ */
 export class StartSemesterComponent implements OnInit{
   @ViewChild('createSemester') createSemesterForm: NgForm;
   @ViewChild('selectCourses') selectCoursesForm: NgForm;
@@ -43,6 +47,7 @@ export class StartSemesterComponent implements OnInit{
 
     /* COMS!
       Esta informacion se refiere a la del nuevo semestre, se deberia enviar este objeto
+      AUN NO ESTA DEFINIDO SI SE ENVIARA POR PARTES O SI SE ENVIARA EN UNA SOLO POST
      */
     console.log(this.createSemesterForm.value);
   }
@@ -57,7 +62,7 @@ export class StartSemesterComponent implements OnInit{
     }
 
     /* COMS!
-      Esta lista de codigos es de los cursos escogidos, se deberia enviar
+      Esta lista de codigos es de los cursos escogidos para el semestre escogio del paso 1
      */
     console.log(this.selectedCoursesList);
   }
@@ -66,8 +71,7 @@ export class StartSemesterComponent implements OnInit{
     this.step++;
 
     /* COMS!
-      Aca deberiamos mandar los numero de grupo para los cursos que van a ser
-      escogidos en el paso anterior
+      Aca deberiamos mandar los numero de grupo para los cursos que van a ser escogidos en el paso anterior
      */
     console.log(this.selectGroupsForm.value);
   }
@@ -76,8 +80,7 @@ export class StartSemesterComponent implements OnInit{
     this.step++;
 
     /* COMS!
-      Aca deberiamos mandar las cedulas de los profes que van a ensehar
-      los cursos seleccionados
+      Aca deberiamos mandar las cedulas de los profes que van a ensehar los cursos seleccionados
      */
     for (const course in this.selectProfessorsForm.value) {
       console.log([course].toString());

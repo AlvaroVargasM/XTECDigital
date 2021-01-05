@@ -7,14 +7,15 @@ import { ProfessorComponent } from './professor-view/professor/professor.compone
 import { StudentComponent } from './student-view/student/student.component';
 import { LoginComponent } from './home-view/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CourseManagementComponent } from './admin-view/admin/course-management/course-management.component';
 import { StartSemesterComponent } from './admin-view/admin/start-semester/start-semester.component';
 import { UploadSemesterComponent } from './admin-view/admin/upload-semester/upload-semester.component';
-import {RubricManagementComponent} from './professor-view/professor/rubric-management/rubric-management.component';
+import { RubricManagementComponent } from './professor-view/professor/rubric-management/rubric-management.component';
 import { NewsManagementComponent } from './professor-view/professor/news-management/news-management.component';
 import { AssignEvaluationComponent } from './professor-view/professor/assign-evaluation/assign-evaluation.component';
 import { TeamManagementComponent } from './professor-view/professor/team-management/team-management.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
