@@ -1,6 +1,7 @@
 ﻿using RelationalDB_RESTAPI.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,6 +23,18 @@ namespace RelationalDB_RESTAPI.Controllers
             bool succesful = DocumentManager.saveToGroupFolder(file, groupCode, groupNumber, semester, period, filesHierachy);
 
             return succesful;
+        }
+
+        [HttpGet]
+        [Route("download/{semester}/{period}/{groupCode}/{groupNumber}/{folder}/{filename}/{format}")]
+        public HttpResponseMessage download(string semester, string period, string groupCode, string groupNumber, string folder, string filename, string format)
+        {
+            string[] filesHierachy = folder.Split('~');
+
+            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+            result.Content = new StreamContent(DocumentManager.getFileFromGroupFolder(groupCode, groupNumber, semester, period, filesHierachy, filename + format));
+            result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/" + format);
+            return result;
         }
     }
 }

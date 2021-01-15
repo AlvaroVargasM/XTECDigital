@@ -43,6 +43,23 @@ namespace RelationalDB_RESTAPI.Utils
             }
         }
 
+        public static FileStream getFileFromTempFolder(string filename, string format)
+        {
+            return File.Open(testFolderPath + '/' + filename + '.' + format, FileMode.Open);
+        }
+
+        public static FileStream getFileFromGroupFolder(string groupCode, string groupNumber, string yearSemester, string periodSemester, string[] subfolders, string filename)
+        {
+            string groupFolder = groupCode + '_' + groupNumber + '_' + yearSemester + '_' + periodSemester;
+
+            foreach (string folder in subfolders)
+            {
+                groupFolder += '/' + folder;
+            }
+
+            return File.Open(fileManagerRoot + '/' + groupFolder + '/' + filename, FileMode.Open);
+        }
+
         public static bool saveToGroupFolder(HttpPostedFile file, string groupCode, string groupNumber, string yearSemester, string periodSemester, string[] subfolders)
         {
             try

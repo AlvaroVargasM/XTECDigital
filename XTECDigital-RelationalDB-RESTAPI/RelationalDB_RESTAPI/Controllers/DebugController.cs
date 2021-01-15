@@ -37,5 +37,15 @@ namespace RelationalDB_RESTAPI.Controllers
 
             return "image uploaded successfully";
         }
+
+        [HttpGet]
+        [Route("downloadFile/{fileName}/{format}")]
+        public HttpResponseMessage getFile(string filename, string format)
+        {
+            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+            result.Content = new StreamContent(DocumentManager.getFileFromTempFolder(filename, format));
+            result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/" + format);
+            return result;
+        }
     }
 }
