@@ -32,8 +32,17 @@ namespace RelationalDB_RESTAPI.Controllers
             string[] filesHierachy = folder.Split('~');
 
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
-            result.Content = new StreamContent(DocumentManager.getFileFromGroupFolder(groupCode, groupNumber, semester, period, filesHierachy, filename + format));
-            result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/" + format);
+            try
+            {
+                result.Content = new StreamContent(DocumentManager.getFileFromGroupFolder(groupCode, groupNumber, semester, period, filesHierachy, filename + '.' + format));
+                result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/" + format);
+                return result;
+            }
+            catch (Exception)
+            {
+                result = new HttpResponseMessage(HttpStatusCode.NoContent);
+            }
+
             return result;
         }
     }
