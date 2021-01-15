@@ -11,6 +11,61 @@ namespace RelationalDB_RESTAPI.Utils
     {
         public static string fileManagerRoot = AppDomain.CurrentDomain.BaseDirectory + "/Database";
         public static string fileDefaults = AppDomain.CurrentDomain.BaseDirectory + "/Configurations/defaults.txt";
+        public static string testFolderPath = AppDomain.CurrentDomain.BaseDirectory + "/TempFolder";
+
+
+        public static bool wipeTestFolderContent()
+        {
+            if (Directory.Exists(testFolderPath))
+            {
+                Directory.Delete(testFolderPath, true);
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/TempFolder");
+
+                return true;
+            }
+            return false;
+        }
+
+        public static bool saveToTempFolder(HttpPostedFile file)
+        {
+            try
+            {
+                string filename = file.FileName;
+
+                file.SaveAs(testFolderPath + "/" +  filename);
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        public static bool saveToGroupFolder(HttpPostedFile file, string groupCode, string groupNumber, string yearSemester, string periodSemester, string[] subfolders)
+        {
+            try
+            {
+                string filename = file.FileName;
+
+                string groupFolder = groupCode + '_' + groupNumber + '_' + yearSemester + '_' + periodSemester;
+
+                foreach (string folder in subfolders)
+                {
+                    groupFolder += '/' + folder;
+                }
+
+                file.SaveAs(fileManagerRoot + '/' + groupFolder + '/' + filename);
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
         
         public static bool startBuildUp()
         {
@@ -24,7 +79,6 @@ namespace RelationalDB_RESTAPI.Utils
             }
             catch (Exception)
             {
-
                 return false;
             }
         }
