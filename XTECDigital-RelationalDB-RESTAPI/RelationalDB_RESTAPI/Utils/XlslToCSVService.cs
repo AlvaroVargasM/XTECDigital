@@ -35,7 +35,13 @@ namespace RelationalDB_RESTAPI.Models
             {
                 for (int i = 0; i < result.Tables["Data"].Columns.Count; i++)
                 {
-                    csvData += result.Tables["Data"].Rows[row_no][i].ToString() + ",";
+                    if (i == 12)
+                    {
+                        csvData += result.Tables["Data"].Rows[row_no][i].ToString();
+                    }
+                    else {
+                        csvData += result.Tables["Data"].Rows[row_no][i].ToString() + ",";
+                    }
                 }
                 row_no++;
                 csvData += "\n";

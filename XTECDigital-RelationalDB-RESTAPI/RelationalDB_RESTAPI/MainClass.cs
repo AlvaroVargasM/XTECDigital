@@ -9,11 +9,13 @@ namespace RelationalDB_RESTAPI
 {
     public class MainClass
     {
+        /*
         static void Main(string[] args)
         {
             List<Semester> semesters = Connector.getSemesters();
             int a = 0;
             a++;
         }
+        */
     }
 }
