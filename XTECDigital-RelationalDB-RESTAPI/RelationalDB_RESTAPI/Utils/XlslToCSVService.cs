@@ -52,46 +52,57 @@ namespace RelationalDB_RESTAPI.Models
                 row_no++;
                 csvData += "\n";
             }
-            string output = "Cache/"+ "Transformed"+".csv"; // define your own filepath & filename
+            string output = DocumentManager.testFolderPath+ "/"+"Transformed"+".csv"; // define your own filepath & filename
             StreamWriter csv = new StreamWriter(@output, false);
             csv.Write(csvData);
             csv.Close();
 
         }
-        public void SaveExcelToSQL() {
+        public bool SaveExcelToSQL(HttpPostedFile file) {
             XlslToCSVService xlstToCSV = new XlslToCSVService();
+            DocumentManager.saveToTempFolder(file);
+            string filename = file.FileName;
+            xlstToCSV.convertToCsv(DocumentManager.testFolderPath + "/" + filename);
             
-            xlstToCSV.convertToCsv("C:/Users/SMZ19/Downloads/SemestreData.xlsx");
             var lineNumber = 0;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                using (StreamReader reader = new StreamReader(@"C:\Users\SMZ19\OneDrive\Documentos\GitHub\XTECDigital\XTECDigital-RelationalDB-RESTAPI\RelationalDB_RESTAPI\Cache\Transformed.csv"))
+                using (StreamReader reader = new StreamReader(DocumentManager.testFolderPath + "/"+"Transformed.csv"))
                 {
                     while (!reader.EndOfStream)
                     {
-                        var line = reader.ReadLine();
-                        if (lineNumber != 0)
+
+                        try
                         {
-                            var values = line.Split(',');
-                            Console.WriteLine("Hello");
-                            Console.WriteLine(values[12]);
-                            Console.ReadLine();
-                            var sql = "INSERT INTO XTECDigital.dbo.TEMPSEMESTRE VALUES ('" + values[0] + "','" + values[1] + "','" + values[2] + "','" + values[3] + "','" + values[4] + "','" + values[5] + "','" + values[6] + "','" + values[7] + "','" + values[8] + "','" + values[9] + "','" + values[10] + "','" + values[11] + "','" + values[12] + "')";
-                            var cmd = new SqlCommand();
-                            cmd.CommandText = sql;
-                            cmd.CommandType = System.Data.CommandType.Text;
-                            cmd.Connection = conn;
-                            cmd.ExecuteNonQuery();
+                            var line = reader.ReadLine();
+                            if (lineNumber != 0)
+                            {
+                                var values = line.Split(',');
+                                var sql = "INSERT INTO XTECDigital.dbo.TEMPSEMESTRE VALUES ('" + values[0] + "','" + values[1] + "','" + values[2] + "','" + values[3] + "','" + values[4] + "','" + values[5] + "','" + values[6] + "','" + values[7] + "','" + values[8] + "','" + values[9] + "','" + values[10] + "','" + values[11] + "','" + values[12] + "')";
+                                var cmd = new SqlCommand();
+                                cmd.CommandText = sql;
+                                cmd.CommandType = System.Data.CommandType.Text;
+                                cmd.Connection = conn;
+                                cmd.ExecuteNonQuery();
+                            }
+                            lineNumber++;
                         }
-                        lineNumber++;
+                        catch (Exception)
+                        {
+
+                            return false;
+                        }
 
                     }
+                    
                 }
                 conn.Close();
+            
+                return true;
             }
-        
-          }
+       
+        }
 
     }
 }

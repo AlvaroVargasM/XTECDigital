@@ -1,0 +1,68 @@
+Carnet,Nombre,Apellido1,Apellido2,IdCurso,NombreCurso,Ano,Semestre,Grupo,IdProfesor,NombreProfesor,ApellidoProfesor,ApellidoProfesor2
+2019A0021,Aaron,Aguilar,Aguilar,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019A0026,Alejandro,Alvarez,Alfaro,CE3104,Lenguajes compiladores e interpretes,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019A0026,Alejandro,Alvarez,Alfaro,CE3104,Lenguajes compiladores e interpretes,2021,1,1,3-3333-3333,Marco ,Hernandez,Vasquez
+2019A0031,Alexis,Arce,Alvarado,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019A0036,Allan,Arredondo,Araya,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019A0041,Andres,Avila,Arguedas,CE3104,Lenguajes compiladores e interpretes,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019A0041,Andres,Avila,Arguedas,CE3104,Lenguajes compiladores e interpretes,2021,1,1,3-3333-3333,Marco ,Hernandez,Vasquez
+2019A0046,Anthony Jafeth,Calderon,Avendaño,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019A0221,Aaron,Aguilar,Aguilar,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019B0022,Arturo,Calvo,Blanco,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019B0027,Christopher,Campos,Brenes,CE3104,Lenguajes compiladores e interpretes,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019B0027,Christopher,Campos,Brenes,CE3104,Lenguajes compiladores e interpretes,2021,1,1,3-3333-3333,Marco ,Hernandez,Vasquez
+2019B0032,Cristofer,Castro,Campos,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019B0037,Dagoberto,Cespedes,Castro,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019B0042,Daniel,Chancon,Cordero,CE3104,Lenguajes compiladores e interpretes,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019B0042,Daniel,Chancon,Cordero,CE3104,Lenguajes compiladores e interpretes,2021,1,1,3-3333-3333,Marco ,Hernandez,Vasquez
+2019B0047,David,Cordoba,Coto,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019C0023,Ellioth,Esquivel,Cubero,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019C0028,Emmanuel,Estrada,Fallas,CE3104,Lenguajes compiladores e interpretes,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019C0028,Emmanuel,Estrada,Fallas,CE3104,Lenguajes compiladores e interpretes,2021,1,1,3-3333-3333,Marco ,Hernandez,Vasquez
+2019C0033,Erick,Fernandez,Fernandez,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019C0038,Erick Alejandro,Gavriel,Fonseca,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019C0043,Estaban Andres,Gonzales,Gomez,CE3104,Lenguajes compiladores e interpretes,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019C0043,Estaban Andres,Gonzales,Gomez,CE3104,Lenguajes compiladores e interpretes,2021,1,1,3-3333-3333,Marco ,Hernandez,Vasquez
+2019C0048,Fabian,Gonzalez,Jimenez,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019D0019,Gabriela,Gutierrez,Juarez,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019D0024,Gerardo,Loaiza,Lobo,CE3104,Lenguajes compiladores e interpretes,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019D0024,Gerardo,Loaiza,Lobo,CE3104,Lenguajes compiladores e interpretes,2021,1,1,3-3333-3333,Marco ,Hernandez,Vasquez
+2019D0029,Gustavo,López,Martinez,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019D0034,Hernaldo,Marin,Martinez,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019D0039,Ignacio,Martinez,Miranda,CE3104,Lenguajes compiladores e interpretes,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019D0039,Ignacio,Martinez,Miranda,CE3104,Lenguajes compiladores e interpretes,2021,1,1,3-3333-3333,Marco ,Hernandez,Vasquez
+2019D0044,Ignacio,Mendez,Molina,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019D0049,James,Monge,Muñoz,CE3101,Bases de Datos,2021,1,1,1-1111-1111,Marco,Rivera,Meneses
+2019E0020,Jean Pierre,Monterrey,Orozco,CE3104,Lenguajes compiladores e interpretes,2021,1,2,1-1111-1111,Marco,Rivera,Meneses
+2019E0020,Jean Pierre,Monterrey,Orozco,CE3104,Lenguajes compiladores e interpretes,2021,1,2,3-3333-3333,Marco ,Hernandez,Vasquez
+2019E0025,Jimena,Mora,Palma,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019E0030,Jose Andres,Mora,Porras,CE3101,Bases de Datos,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019E0035,Joseph,Muñoz,Porras,CE3104,Lenguajes compiladores e interpretes,2021,1,2,1-1111-1111,Marco,Rivera,Meneses
+2019E0035,Joseph,Muñoz,Porras,CE3104,Lenguajes compiladores e interpretes,2021,1,2,3-3333-3333,Marco ,Hernandez,Vasquez
+2019E0040,Juan,Navarro,Quesada,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2019E0045,Kevin,Nuñez,Quiros,CE3101,Bases de Datos,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020A0001,Kevin,Obregón,Ramirez,CE3104,Lenguajes compiladores e interpretes,2021,1,2,1-1111-1111,Marco,Rivera,Meneses
+2020A0001,Kevin,Obregón,Ramirez,CE3104,Lenguajes compiladores e interpretes,2021,1,2,3-3333-3333,Marco ,Hernandez,Vasquez
+2020A0006,Kevin Andres,Pereira,Ramirez,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020A0011,Luis,Ramirez,Rojas,CE3101,Bases de Datos,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020A0016,Luis,Ramirez,Rosales,CE3104,Lenguajes compiladores e interpretes,2021,1,2,1-1111-1111,Marco,Rivera,Meneses
+2020A0016,Luis,Ramirez,Rosales,CE3104,Lenguajes compiladores e interpretes,2021,1,2,3-3333-3333,Marco ,Hernandez,Vasquez
+2020B0002,Luis Andres,Ramirez,Salas,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020B0007,Marycruz A,Rivera,Salas,CE3101,Bases de Datos,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020B0012,Mauricio,Rodriguez,Sanabria,CE3104,Lenguajes compiladores e interpretes,2021,1,2,1-1111-1111,Marco,Rivera,Meneses
+2020B0012,Mauricio,Rodriguez,Sanabria,CE3104,Lenguajes compiladores e interpretes,2021,1,2,3-3333-3333,Marco ,Hernandez,Vasquez
+2020B0017,Nayib,Rojas,Sanchez,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020C0003,Nickolas,Rojas,Sanchez,CE3101,Bases de Datos,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020C0008,Pablo,Roman,Sanchez,CE3104,Lenguajes compiladores e interpretes,2021,1,2,1-1111-1111,Marco,Rivera,Meneses
+2020C0008,Pablo,Roman,Sanchez,CE3104,Lenguajes compiladores e interpretes,2021,1,2,3-3333-3333,Marco ,Hernandez,Vasquez
+2020C0013,Roberto,Salas,Santos,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020C0018,Roberto,Salas,Soto,CE3101,Bases de Datos,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020D0004,Roberto,Segura,Trejos,CE3104,Lenguajes compiladores e interpretes,2021,1,2,1-1111-1111,Marco,Rivera,Meneses
+2020D0004,Roberto,Segura,Trejos,CE3104,Lenguajes compiladores e interpretes,2021,1,2,3-3333-3333,Marco ,Hernandez,Vasquez
+2020D0009,Sebastian,Solera,Umaña,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020D0014,Sebastian,Vargas,Varela,CE3101,Bases de Datos,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020E0005,Steven,Vega,Villalobos,CE3104,Lenguajes compiladores e interpretes,2021,1,2,1-1111-1111,Marco,Rivera,Meneses
+2020E0005,Steven,Vega,Villalobos,CE3104,Lenguajes compiladores e interpretes,2021,1,2,3-3333-3333,Marco ,Hernandez,Vasquez
+2020E0010,Vinicio,Zeledon,Zuñiga,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020E0010,Vinicio,Zuñiga,Zeledon,CE4101,Especificacion y Diseno de Software,2021,1,2,2-2222-2222,Diego,Noguera,Mena
+2020E0015,Yenira,Zuñiga,Zuñiga,CE3101,Bases de Datos,2021,1,2,2-2222-2222,Diego,Noguera,Mena

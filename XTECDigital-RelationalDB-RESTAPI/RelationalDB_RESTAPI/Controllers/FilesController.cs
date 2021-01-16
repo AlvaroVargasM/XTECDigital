@@ -1,4 +1,5 @@
-﻿using RelationalDB_RESTAPI.Utils;
+﻿using RelationalDB_RESTAPI.Models;
+using RelationalDB_RESTAPI.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -45,5 +46,18 @@ namespace RelationalDB_RESTAPI.Controllers
 
             return result;
         }
+
+        [HttpPost]
+        [Route("LoadExcelToSQL")]
+        public bool saveExcelToSQL()
+        {
+            var file = HttpContext.Current.Request.Files["file"];
+
+            XlslToCSVService excelToCSVServ = new XlslToCSVService();
+            bool response = excelToCSVServ.SaveExcelToSQL(file);
+
+            return response;
+        }
+
     }
 }
