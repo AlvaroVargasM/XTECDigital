@@ -42,5 +42,32 @@ namespace RelationalDB_RESTAPI.Controllers
 
             return Ok(groups);
         }
+
+        [HttpGet]
+        [Route("Groups/{professorSSN}")]
+        public IHttpActionResult getGroupsByProfessor(string professorSSN)
+        {
+            List<Group> groups = Connector.getGroupsByProfesor(professorSSN);
+            if (groups == null)
+            {
+                return null;
+            }
+
+            return Ok(groups);
+        }
+
+        [HttpPost]
+        [Route("Groups/GenerateDatabase")]
+        public IHttpActionResult generateDatabase()
+        {
+            bool done = DocumentManager.startBuildUp();
+            
+            if(done)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        }
     }
 }

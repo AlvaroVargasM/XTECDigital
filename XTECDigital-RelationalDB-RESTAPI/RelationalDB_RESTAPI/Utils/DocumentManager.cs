@@ -10,8 +10,95 @@ namespace RelationalDB_RESTAPI.Utils
     public static class DocumentManager
     {
         public static string fileManagerRoot = AppDomain.CurrentDomain.BaseDirectory + "/Database";
-        public static string fileDefaults = AppDomain.CurrentDomain.BaseDirectory + "/Configs/defaults.txt";
-        public static List<string> templateFolder;
+        public static string fileDefaults = AppDomain.CurrentDomain.BaseDirectory + "/Configurations/defaults.txt";
+        public static string testFolderPath = AppDomain.CurrentDomain.BaseDirectory + "/TempFolder";
+
+
+        public static bool wipeTestFolderContent()
+        {
+            if (Directory.Exists(testFolderPath))
+            {
+                Directory.Delete(testFolderPath, true);
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/TempFolder");
+
+                return true;
+            }
+            return false;
+        }
+
+        public static bool saveToTempFolder(HttpPostedFile file)
+        {
+            try
+            {
+                string filename = file.FileName;
+
+                file.SaveAs(testFolderPath + "/" +  filename);
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        public static FileStream getFileFromTempFolder(string filename, string format)
+        {
+            return File.Open(testFolderPath + '/' + filename + '.' + format, FileMode.Open);
+        }
+
+        public static FileStream getFileFromGroupFolder(string groupCode, string groupNumber, string yearSemester, string periodSemester, string[] subfolders, string filename)
+        {
+            string groupFolder = groupCode + '_' + groupNumber + '_' + yearSemester + '_' + periodSemester;
+
+            foreach (string folder in subfolders)
+            {
+                groupFolder += '/' + folder;
+            }
+
+            return File.Open(fileManagerRoot + '/' + groupFolder + '/' + filename, FileMode.Open);
+        }
+
+        public static bool saveToGroupFolder(HttpPostedFile file, string groupCode, string groupNumber, string yearSemester, string periodSemester, string[] subfolders)
+        {
+            try
+            {
+                string filename = file.FileName;
+
+                string groupFolder = groupCode + '_' + groupNumber + '_' + yearSemester + '_' + periodSemester;
+
+                foreach (string folder in subfolders)
+                {
+                    groupFolder += '/' + folder;
+                }
+
+                file.SaveAs(fileManagerRoot + '/' + groupFolder + '/' + filename);
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+        
+        public static bool startBuildUp()
+        {
+            try
+            {
+                List<String> defaults = new List<string>();
+
+                CreateRootFolderForGroup();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         
         public static bool checkExistence(string path)
         {

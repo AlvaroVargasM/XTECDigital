@@ -23,35 +23,5 @@ namespace RelationalDB_RESTAPI.Controllers
 
             return Ok(semesters);
         }
-
-        [HttpGet]
-        [Route("Semester/{year}/{period}/Courses")]
-        public IHttpActionResult getCoursesforSemester(int year, string period)
-        {
-
-            /*List<Course> courses = Connector.getCoursesBySemester(year, period);
-            if(courses == null)
-            {
-                return null;
-            }
-
-            return courses;*/
-            return null;
-        }
-
-        [HttpGet]
-        [Route("Semester/{year}/{period}/{courseCode}/Groups")]
-        public IHttpActionResult getGroupsByCourse(int year, string period, string courseCode)
-        {
-
-            /*List<Group> groups = Connector.getGroupsBySemesterANDCourse(year, period, courseCode);
-            if(groups == null)
-            {
-                return null;
-            }
-
-            return groups;*/
-            return null;
-        }
     }
 }
