@@ -16,6 +16,7 @@ import { NewsManagementComponent } from './professor-view/professor/news-managem
 import { AssignEvaluationComponent } from './professor-view/professor/assign-evaluation/assign-evaluation.component';
 import { TeamManagementComponent } from './professor-view/professor/team-management/team-management.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SubmittedEvaluationComponent } from './professor-view/professor/submitted-evaluation/submitted-evaluation.component';
 
 
 const appRoutes: Routes = [
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     RubricManagementComponent,
     NewsManagementComponent,
     AssignEvaluationComponent,
-    TeamManagementComponent
+    TeamManagementComponent,
+    SubmittedEvaluationComponent
   ],
   imports: [
     BrowserModule,
