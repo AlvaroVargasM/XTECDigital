@@ -70,6 +70,13 @@ namespace RelationalDB_RESTAPI.Models
                 conn.Open();
                 using (StreamReader reader = new StreamReader(DocumentManager.testFolderPath + "/"+"Transformed.csv"))
                 {
+                    var sqlCreate = "CREATE TABLE ##TEMPSEMESTRE(Carnet VARCHAR(50),Nombre VARCHAR(50),Apellido1 VARCHAR(50),Apellido2 VARCHAR(50),IdCurso VARCHAR(50),NombreCurso VARCHAR(50),Ano INT,Semestre INT, Grupo INT,IdProfesor VARCHAR(50),NombreProfesor VARCHAR(50),ApellidoProfesor VARCHAR(50),ApellidoProfesor2 VARCHAR(50))";
+                    var cmdCreate = new SqlCommand();
+                    cmdCreate.CommandText = sqlCreate;
+                    cmdCreate.CommandType = System.Data.CommandType.Text;
+                    cmdCreate.Connection = conn;
+                    cmdCreate.ExecuteNonQuery();
+
                     while (!reader.EndOfStream)
                     {
 
@@ -79,7 +86,7 @@ namespace RelationalDB_RESTAPI.Models
                             if (lineNumber != 0)
                             {
                                 var values = line.Split(',');
-                                var sql = "INSERT INTO XTECDigital.dbo.TEMPSEMESTRE VALUES ('" + values[0] + "','" + values[1] + "','" + values[2] + "','" + values[3] + "','" + values[4] + "','" + values[5] + "','" + values[6] + "','" + values[7] + "','" + values[8] + "','" + values[9] + "','" + values[10] + "','" + values[11] + "','" + values[12] + "')";
+                                var sql = "INSERT INTO ##TEMPSEMESTRE VALUES ('" + values[0] + "','" + values[1] + "','" + values[2] + "','" + values[3] + "','" + values[4] + "','" + values[5] + "','" + values[6] + "','" + values[7] + "','" + values[8] + "','" + values[9] + "','" + values[10] + "','" + values[11] + "','" + values[12] + "')";
                                 var cmd = new SqlCommand();
                                 cmd.CommandText = sql;
                                 cmd.CommandType = System.Data.CommandType.Text;
@@ -97,6 +104,9 @@ namespace RelationalDB_RESTAPI.Models
                     }
                     
                 }
+                SqlCommand execSP = new SqlCommand("fillSQLwithExcel", conn);
+                execSP.CommandType = CommandType.StoredProcedure;
+                execSP.ExecuteNonQuery();
                 conn.Close();
             
                 return true;
