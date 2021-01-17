@@ -186,5 +186,32 @@ namespace RelationalDB_RESTAPI.Utils
                 }
             }
         }
+
+        public static bool createCourse(string code, string name, int credits, string school)
+        {
+            using (SqlConnection connection =
+                  new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand command =
+                                        new SqlCommand("CreateCourse", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("code", code);
+                    command.Parameters.AddWithValue("name", name);
+                    command.Parameters.AddWithValue("credits", credits);
+                    command.Parameters.AddWithValue("school", school);
+                    connection.Open();
+
+                    bool result = (bool)command.ExecuteScalar();
+
+                    return result;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

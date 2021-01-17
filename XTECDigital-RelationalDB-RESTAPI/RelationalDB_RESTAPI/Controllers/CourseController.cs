@@ -23,5 +23,12 @@ namespace RelationalDB_RESTAPI.Controllers
 
             return Ok(courses);
         }
+
+        [HttpPost]
+        [Route("Courses/{code}/{name}/{credits}/{school}")]
+        public bool createCourse(string code, string name, int credits, string school)
+        {
+            return Connector.createCourse(code, name, credits, school);
+        }
     }
 }

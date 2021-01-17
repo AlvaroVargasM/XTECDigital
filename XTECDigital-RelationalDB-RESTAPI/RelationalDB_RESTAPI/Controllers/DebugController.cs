@@ -29,13 +29,13 @@ namespace RelationalDB_RESTAPI.Controllers
             if (file != null)
             {
                 DocumentManager.saveToTempFolder(file);
+
+                return "image uploaded successfully";
             }
             else
             {
                 return "Key doesn't match or file was empty";
             }
-
-            return "image uploaded successfully";
         }
 
         [HttpGet]
