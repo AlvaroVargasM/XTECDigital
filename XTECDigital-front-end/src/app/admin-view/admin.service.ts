@@ -18,14 +18,7 @@ export class AdminService {
   coursesAvailable: Course[];
 
   // START SEMESTER
-
-  /* COMS!
-    Esta lista se rellena con los cursos asociados entre el semestre del paso 1 y los cursos del paso 2
-    de la seccion de inicializacion de semestre, osea los cursos que se encontrarian en [isAvailable]
-    en la base de datos. Esto en buena teoria pues aun se tiene que definir como se va a enviar el form
-    de inicializacion. ESTO IGNORARLO HASTA QUE SE RESUELVA.
-   */
-  coursesActive: Course[];
+  coursesActive: Course[] = [];
 
   /* COMS!
     Esta es la lista de todos los professores disponibles en el sistema, esta info sale de la base no relacional
@@ -58,7 +51,6 @@ export class AdminService {
         'Ingenieria en Electronica'
       )
     ];
-    this.coursesActive = this.coursesAvailable;
 
     this.professorsList = [
       new Professor(

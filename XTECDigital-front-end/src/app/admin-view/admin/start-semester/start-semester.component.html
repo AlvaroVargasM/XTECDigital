@@ -3,7 +3,7 @@
   <div
     class="btn my-step-progress-button">
     <h5>Inicializar un nuevo semestre</h5>
-    Paso {{step}} de 6
+    Paso {{step}} de 5
   </div>
 </div>
 
@@ -89,12 +89,12 @@
         <div class="form-group" ngModelGroup="courses">
           <div class="row" style="margin-bottom: 10px">
             <div class="col-auto">
-              <div class="card-text" *ngFor="let c of coursesList" style="margin-bottom: 25px">
+              <div class="card-text" *ngFor="let c of coursesChosen" style="margin-bottom: 25px">
                 {{ c.name }} | {{ c.code }}
               </div>
             </div>
             <div class="col-auto">
-              <div *ngFor="let c of coursesList" class="container" style="margin-bottom: 10px">
+              <div *ngFor="let c of coursesChosen" class="container" style="margin-bottom: 10px">
                 <input
                   type="number"
                   class="form-control"

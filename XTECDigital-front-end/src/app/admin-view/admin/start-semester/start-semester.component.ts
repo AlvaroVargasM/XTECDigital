@@ -25,7 +25,7 @@ export class StartSemesterComponent implements OnInit{
   step: number;
   coursesList: Course[];
   coursesChosen: Course[];
-  selectedCoursesList: string[] = [];
+  selectedCoursesCodesList: string[] = [];
   professors: Professor[];
   students: Student[];
 
@@ -57,14 +57,27 @@ export class StartSemesterComponent implements OnInit{
 
     for (const property in this.selectCoursesForm.value.courses) {
       if (this.selectCoursesForm.value.courses[property]) {
-        this.selectedCoursesList.push(property.toString());
+        this.selectedCoursesCodesList.push(property.toString());
       }
     }
 
     /* COMS!
       Esta lista de codigos es de los cursos escogidos para el semestre escogio del paso 1
      */
-    console.log(this.selectedCoursesList);
+    console.log(this.selectedCoursesCodesList);
+
+    for (let code of this.selectedCoursesCodesList) {
+      for (let course of this.coursesList) {
+        if (code === course.code) {
+          this.aService.coursesActive.push(
+            new Course(
+              course.code,
+              course.name,
+              course.credits,
+              course.career));
+        }
+      }
+    }
   }
 
   onSelectGroups(): void {
@@ -107,5 +120,7 @@ export class StartSemesterComponent implements OnInit{
         }
       }
     }
+
+    this.aService.coursesActive = [];
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CommunicationService} from '../../../communication.service';
+import * as fileSaver from 'file-saver';
 
 @Component({
   selector: 'app-submitted-evaluation',
