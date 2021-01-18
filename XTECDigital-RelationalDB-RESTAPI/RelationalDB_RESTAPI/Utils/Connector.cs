@@ -213,5 +213,13 @@ namespace RelationalDB_RESTAPI.Utils
                 }
             }
         }
+
+        /**
+         * Not done
+         */
+        public static bool SemesterInitialization(Semester semester, Course[] courses, Group[] groups)
+        {
+            return false;
+        }
     }
 }

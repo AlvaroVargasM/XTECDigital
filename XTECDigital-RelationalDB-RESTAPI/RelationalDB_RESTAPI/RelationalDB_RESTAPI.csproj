@@ -182,6 +182,9 @@
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Run.cs" />
     <Compile Include="Models\Semester.cs" />
+    <Compile Include="Models\Professor.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Utils\HttpClientConnector.cs" />
     <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\Toolkit.cs" />
     <Compile Include="Utils\XlslToCSVService.cs" />

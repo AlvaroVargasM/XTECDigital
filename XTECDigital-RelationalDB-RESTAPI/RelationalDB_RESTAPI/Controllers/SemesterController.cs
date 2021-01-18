@@ -23,5 +23,21 @@ namespace RelationalDB_RESTAPI.Controllers
 
             return Ok(semesters);
         }
+
+        [HttpGet]
+        [Route("Semesters/{year}/{period}")]
+        public bool isSemesterCreated(string year, string period)
+        {
+            List<Semester> semesters = Connector.getSemesters();
+            foreach(Semester semester in semesters)
+            {
+                if (semester.year.Equals(year) && semester.period.Equals(period))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

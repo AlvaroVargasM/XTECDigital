@@ -1,4 +1,5 @@
-﻿using RelationalDB_RESTAPI.Utils;
+﻿using RelationalDB_RESTAPI.Models;
+using RelationalDB_RESTAPI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,5 +48,17 @@ namespace RelationalDB_RESTAPI.Controllers
             result.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/" + format);
             return result;
         }
+
+
+        [HttpGet]
+        [Route("getProfessors")]
+        public List<Professor> getProfessor()
+        {
+            return HttpClientConnector.getProfessors().Result;
+        }
+
+        [HttpGet]
+        [Route("getProfessors")]
+        public List<>
     }
 }
