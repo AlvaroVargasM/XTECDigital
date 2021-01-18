@@ -45,11 +45,13 @@ export class StartSemesterComponent implements OnInit{
   onCreateSemester(): void {
     this.step++;
 
-    /* COMS!
-      Esta informacion se refiere a la del nuevo semestre, se deberia enviar este objeto
-      AUN NO ESTA DEFINIDO SI SE ENVIARA POR PARTES O SI SE ENVIARA EN UNA SOLO POST
-     */
-    console.log(this.createSemesterForm.value);
+    //console.log(this.createSemesterForm.value);
+
+    this.aService.fd.append(
+      'semester',
+      '{period:' + this.createSemesterForm.value.period + ',year:' + this.createSemesterForm.value.year + '}'
+    );
+    console.log(this.aService.fd.getAll('semester'));
   }
 
   onSelectCourses(): void {
@@ -61,10 +63,14 @@ export class StartSemesterComponent implements OnInit{
       }
     }
 
-    /* COMS!
-      Esta lista de codigos es de los cursos escogidos para el semestre escogio del paso 1
-     */
-    console.log(this.selectedCoursesCodesList);
+    let fdcourses = '';
+    for (let c of this.selectedCoursesCodesList) {
+      fdcourses += c + ',';
+    }
+    this.aService.fd.append('courses', fdcourses);
+    console.log(this.aService.fd.getAll('courses'));
+
+    //console.log(this.selectedCoursesCodesList);
 
     for (let code of this.selectedCoursesCodesList) {
       for (let course of this.coursesList) {
@@ -83,44 +89,51 @@ export class StartSemesterComponent implements OnInit{
   onSelectGroups(): void {
     this.step++;
 
-    /* COMS!
-      Aca deberiamos mandar los numero de grupo para los cursos que van a ser escogidos en el paso anterior
-     */
-    console.log(this.selectGroupsForm.value);
+    //console.log(this.selectGroupsForm.value.courses);
+
+    let fdcoursesnumbers = '';
+
+    for (let course in this.selectGroupsForm.value) {
+      for (let number in this.selectGroupsForm.value[course])
+      fdcoursesnumbers += this.selectGroupsForm.value[course][number].toString() + ',';
+    }
+
+    this.aService.fd.append('groups', fdcoursesnumbers);
+    console.log(this.aService.fd.getAll('groups'));
   }
 
   onSelectProfessors(): void {
     this.step++;
+    let fdteachers = '';
 
-    /* COMS!
-      Aca deberiamos mandar las cedulas de los profes que van a ensehar los cursos seleccionados
-     */
     for (const course in this.selectProfessorsForm.value) {
-      console.log([course].toString());
       for (const professor in this.selectProfessorsForm.value[course]) {
         if (this.selectProfessorsForm.value[course][professor]) {
-          console.log([professor].toString());
+          fdteachers += [professor].toString() + ',';
         }
       }
+      fdteachers += ';';
     }
+
+    this.aService.fd.append('professors', fdteachers);
+    console.log(this.aService.fd.getAll('professors'));
   }
 
   onSelectStudents(): void {
     this.step = 1;
+    let fdstudents = '';
 
-    /* COMS!
-      Aca mandamos de manera similar a como mandamos los profes, el
-      codigo del curso y los carnet de los estudiantes asociados a dicho codigo
-     */
     for (const course in this.selectStudentsForm.value) {
-      console.log([course].toString());
       for (const student in this.selectStudentsForm.value[course]) {
         if (this.selectStudentsForm.value[course][student]) {
-          console.log([student].toString());
+          fdstudents += [student].toString() + ',';
         }
       }
+      fdstudents += ';';
     }
 
+    this.aService.fd.append('students', fdstudents);
+    console.log(this.aService.fd.getAll('students'));
     this.aService.coursesActive = [];
   }
 }

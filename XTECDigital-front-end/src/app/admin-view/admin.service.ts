@@ -8,6 +8,7 @@ import {Student} from '../models/student.model';
 })
 export class AdminService {
   isStartSemester: boolean;
+  fd: FormData = new FormData();
 
   // COURSE MANAGEMENT
 
