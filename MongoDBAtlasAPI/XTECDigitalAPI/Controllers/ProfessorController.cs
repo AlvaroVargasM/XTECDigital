@@ -4,11 +4,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using XTECDigitalAPI.Models;
 
 
 namespace XTECDigitalAPI.Controllers
 {
+    [EnableCors(origins:"*",headers:"*",methods:"*")]
     public class ProfessorController : ApiController
     {
         public readonly ProfessorDBAccessProvider _professorAccess = new ProfessorDBAccessProvider();
