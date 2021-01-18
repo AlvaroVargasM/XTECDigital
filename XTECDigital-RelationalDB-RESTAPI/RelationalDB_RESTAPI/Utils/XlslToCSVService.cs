@@ -68,14 +68,15 @@ namespace RelationalDB_RESTAPI.Models
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+                var cmd = new SqlCommand();
                 using (StreamReader reader = new StreamReader(DocumentManager.testFolderPath + "/"+"Transformed.csv"))
                 {
                     var sqlCreate = "CREATE TABLE ##TEMPSEMESTRE(Carnet VARCHAR(50),Nombre VARCHAR(50),Apellido1 VARCHAR(50),Apellido2 VARCHAR(50),IdCurso VARCHAR(50),NombreCurso VARCHAR(50),Ano INT,Semestre INT, Grupo INT,IdProfesor VARCHAR(50),NombreProfesor VARCHAR(50),ApellidoProfesor VARCHAR(50),ApellidoProfesor2 VARCHAR(50))";
-                    var cmdCreate = new SqlCommand();
-                    cmdCreate.CommandText = sqlCreate;
-                    cmdCreate.CommandType = System.Data.CommandType.Text;
-                    cmdCreate.Connection = conn;
-                    cmdCreate.ExecuteNonQuery();
+                    
+                    cmd.CommandText = sqlCreate;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
 
                     while (!reader.EndOfStream)
                     {
@@ -87,7 +88,6 @@ namespace RelationalDB_RESTAPI.Models
                             {
                                 var values = line.Split(',');
                                 var sql = "INSERT INTO ##TEMPSEMESTRE VALUES ('" + values[0] + "','" + values[1] + "','" + values[2] + "','" + values[3] + "','" + values[4] + "','" + values[5] + "','" + values[6] + "','" + values[7] + "','" + values[8] + "','" + values[9] + "','" + values[10] + "','" + values[11] + "','" + values[12] + "')";
-                                var cmd = new SqlCommand();
                                 cmd.CommandText = sql;
                                 cmd.CommandType = System.Data.CommandType.Text;
                                 cmd.Connection = conn;
