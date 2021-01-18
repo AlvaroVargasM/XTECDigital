@@ -56,9 +56,5 @@ namespace RelationalDB_RESTAPI.Controllers
         {
             return HttpClientConnector.getProfessors().Result;
         }
-
-        [HttpGet]
-        [Route("getProfessors")]
-        public List<>
     }
 }
