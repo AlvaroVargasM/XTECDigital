@@ -17,6 +17,7 @@ import { AssignEvaluationComponent } from './professor-view/professor/assign-eva
 import { TeamManagementComponent } from './professor-view/professor/team-management/team-management.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SubmittedEvaluationComponent } from './professor-view/professor/submitted-evaluation/submitted-evaluation.component';
+import { CommunicationService } from './communication.service';
 
 
 const appRoutes: Routes = [
@@ -49,7 +50,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
