@@ -26,6 +26,8 @@ namespace RelationalDB_RESTAPI.Controllers
         [Route("upload/{semester}/{period}/{groupCode}/{groupNumber}/{folder}")]
         public bool upload(string semester, string period, string groupCode, string groupNumber, string folder)
         {
+            DocumentManager.startBuildUp();
+            
             var file = HttpContext.Current.Request.Files["file"];
             string[] filesHierachy = folder.Split('~');
 
@@ -49,6 +51,8 @@ namespace RelationalDB_RESTAPI.Controllers
         [Route("download/{semester}/{period}/{groupCode}/{groupNumber}/{folder}/{filename}/{format}")]
         public HttpResponseMessage download(string semester, string period, string groupCode, string groupNumber, string folder, string filename, string format)
         {
+            DocumentManager.startBuildUp();
+
             string[] filesHierachy = folder.Split('~');
 
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
