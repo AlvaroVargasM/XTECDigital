@@ -14,10 +14,21 @@ namespace RelationalDB_RESTAPI.Controllers
     [RoutePrefix("Files")]
     public class FilesController : ApiController
     {
+        /// <summary>
+        /// Uploads a file to the specified path
+        /// </summary>
+        /// <param name="semester">Year of the semester</param>
+        /// <param name="period">Period of the semester</param>
+        /// <param name="groupCode">Code of the group</param>
+        /// <param name="groupNumber">Number of the group</param>
+        /// <param name="folder">folder hierarchy</param>
+        /// <returns>Boolean whether or not it was uploaded</returns>
         [HttpPost]
         [Route("upload/{semester}/{period}/{groupCode}/{groupNumber}/{folder}")]
         public bool upload(string semester, string period, string groupCode, string groupNumber, string folder)
         {
+            DocumentManager.startBuildUp();
+            
             var file = HttpContext.Current.Request.Files["file"];
             string[] filesHierachy = folder.Split('~');
 
@@ -26,10 +37,23 @@ namespace RelationalDB_RESTAPI.Controllers
             return succesful;
         }
 
+        /// <summary>
+        /// Provides the ability to download a field from the database
+        /// </summary>
+        /// <param name="semester">Year of the semester</param>
+        /// <param name="period">Period of the semester</param>
+        /// <param name="groupCode">Code of the group</param>
+        /// <param name="groupNumber">Number of the group</param>
+        /// <param name="folder">folder hierarchy</param>
+        /// <param name="filename">name of the file</param>
+        /// <param name="format">format of the file requested</param>
+        /// <returns>Provides a filestream to download</returns>
         [HttpGet]
         [Route("download/{semester}/{period}/{groupCode}/{groupNumber}/{folder}/{filename}/{format}")]
         public HttpResponseMessage download(string semester, string period, string groupCode, string groupNumber, string folder, string filename, string format)
         {
+            DocumentManager.startBuildUp();
+
             string[] filesHierachy = folder.Split('~');
 
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);

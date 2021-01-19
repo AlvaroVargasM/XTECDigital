@@ -12,6 +12,10 @@ namespace RelationalDB_RESTAPI.Controllers
     
     public class GroupController : ApiController
     {
+        /// <summary>
+        /// Gets all groups from the server
+        /// </summary>
+        /// <returns>All groups</returns>
         [HttpGet]
         [Route("Groups")]
         public IHttpActionResult getGroups()
@@ -25,6 +29,12 @@ namespace RelationalDB_RESTAPI.Controllers
             return Ok(groups);
         }
 
+        /// <summary>
+        /// Gets all group from an specific semester
+        /// </summary>
+        /// <param name="year">Year of the semester</param>
+        /// <param name="period">Period of the semester</param>
+        /// <returns>All groups in the semester</returns>
         [HttpGet]
         [Route("Groups/{year}/{period}")]
         public IHttpActionResult getGroupsBySemester(int year, string period)
@@ -43,6 +53,11 @@ namespace RelationalDB_RESTAPI.Controllers
             return Ok(groups);
         }
 
+        /// <summary>
+        /// Gets the groups from a professor
+        /// </summary>
+        /// <param name="professorSSN">Professors SSN</param>
+        /// <returns>Groups by chosen professor</returns>
         [HttpGet]
         [Route("Groups/{professorSSN}")]
         public IHttpActionResult getGroupsByProfessor(string professorSSN)
@@ -56,6 +71,10 @@ namespace RelationalDB_RESTAPI.Controllers
             return Ok(groups);
         }
 
+        /// <summary>
+        /// Generates the folder from the server's groups
+        /// </summary>
+        /// <returns>ResponseCode</returns>
         [HttpPost]
         [Route("Groups/GenerateDatabase")]
         public IHttpActionResult generateDatabase()
