@@ -13,6 +13,10 @@ namespace RelationalDB_RESTAPI.Controllers
     [RoutePrefix("Debug")]
     public class DebugController : ApiController
     {
+        /// <summary>
+        /// Gets the path in which the database is being hosted
+        /// </summary>
+        /// <returns>Returns a string of the path</returns>
         [HttpGet]
         [Route("getPath")]
         public string getPath()
@@ -20,6 +24,10 @@ namespace RelationalDB_RESTAPI.Controllers
             return AppDomain.CurrentDomain.BaseDirectory;
         }
 
+        /// <summary>
+        /// Uploads a file to the temp folder
+        /// </summary>
+        /// <returns>returns a confirmation string</returns>
         [HttpPost]
         [Route("uploadFile")]
         public string uploadFile()
@@ -39,6 +47,12 @@ namespace RelationalDB_RESTAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// downloads a file from the temp folder
+        /// </summary>
+        /// <param name="filename">name of file</param>
+        /// <param name="format">format of file</param>
+        /// <returns>Filestream for file</returns>
         [HttpGet]
         [Route("downloadFile/{fileName}/{format}")]
         public HttpResponseMessage getFile(string filename, string format)
@@ -50,6 +64,10 @@ namespace RelationalDB_RESTAPI.Controllers
         }
 
 
+        /// <summary>
+        /// Gets the professors from the database
+        /// </summary>
+        /// <returns>All professors</returns>
         [HttpGet]
         [Route("getProfessors")]
         public List<Professor> getProfessor()

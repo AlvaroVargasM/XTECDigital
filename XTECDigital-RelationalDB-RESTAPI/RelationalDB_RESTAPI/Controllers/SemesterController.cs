@@ -16,6 +16,10 @@ namespace RelationalDB_RESTAPI.Controllers
     [RoutePrefix("Semesters")]
     public class SemesterController : ApiController
     {
+        /// <summary>
+        /// Gets all the semesters
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IHttpActionResult getSemesters()
         {
@@ -28,6 +32,12 @@ namespace RelationalDB_RESTAPI.Controllers
             return Ok(semesters);
         }
 
+        /// <summary>
+        /// Verifies if a semester is created
+        /// </summary>
+        /// <param name="year">Year of the semester being queried</param>
+        /// <param name="period">Period of the semester being queried</param>
+        /// <returns>Whether or not the semester exists</returns>
         [HttpGet]
         [Route("{year}/{period}")]
         public bool isSemesterCreated(string year, string period)
@@ -44,6 +54,10 @@ namespace RelationalDB_RESTAPI.Controllers
             return false;
         }
 
+        /// <summary>
+        /// Initializes Semester
+        /// </summary>
+        /// <returns>boolean whether or not the server completed the request</returns>
         [HttpPost]
         [Route("Initialize")]
         public bool initializeSemester()

@@ -14,6 +14,10 @@ namespace RelationalDB_RESTAPI.Utils
 
         private static readonly HttpClient client = new HttpClient();
 
+        /// <summary>
+        /// Gets all professors from the MongoDB rest api
+        /// </summary>
+        /// <returns>Professors names</returns>
         public async static Task<List<Professor>> getProfessors()
         {
             HttpResponseMessage response = client.GetAsync("https://xtecdigitalapi20201217234131.azurewebsites.net/api/Professor/Get").Result;

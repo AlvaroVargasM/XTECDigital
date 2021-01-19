@@ -14,6 +14,10 @@ namespace RelationalDB_RESTAPI.Utils
             "Network Library = DBMSSOCN; Initial Catalog = XTECDigital; " +
             "User ID = dxnium; Password=Dumanamonge9921";
 
+        /// <summary>
+        /// Gets all the semester
+        /// </summary>
+        /// <returns>Gets all semesters</returns>
         public static List<Semester> getSemesters()
         {
             using (SqlConnection connection =
@@ -49,6 +53,10 @@ namespace RelationalDB_RESTAPI.Utils
 
         }
 
+        /// <summary>
+        /// Gets all courses
+        /// </summary>
+        /// <returns>All courses</returns>
         public static List<Course> getCourses()
         {
             using (SqlConnection connection =
@@ -82,6 +90,10 @@ namespace RelationalDB_RESTAPI.Utils
             }
         }
 
+        /// <summary>
+        /// Gets all groups
+        /// </summary>
+        /// <returns>All groups</returns>
         public static List<Group> getGroups()
         {
             using (SqlConnection connection =
@@ -116,6 +128,12 @@ namespace RelationalDB_RESTAPI.Utils
             }
         }
 
+        /// <summary>
+        /// Gets all groups belonging to semester
+        /// </summary>
+        /// <param name="year">Semester year</param>
+        /// <param name="period">Semester Period</param>
+        /// <returns>All groups belonging to a semester</returns>
         public static List<Group> getGroupsBySemester(int year, string period)
         {
             using (SqlConnection connection =
@@ -152,6 +170,11 @@ namespace RelationalDB_RESTAPI.Utils
             }
         }
 
+        /// <summary>
+        /// GetsGroupsByProfessor
+        /// </summary>
+        /// <param name="ssn">Professor's SSN</param>
+        /// <returns>All groups by professor</returns>
         public static List<Group> getGroupsByProfesor(string ssn)
         {
             using (SqlConnection connection =
@@ -187,6 +210,14 @@ namespace RelationalDB_RESTAPI.Utils
             }
         }
 
+        /// <summary>
+        /// Creates a course in the database
+        /// </summary>
+        /// <param name="code">Code for course</param>
+        /// <param name="name">Name for course</param>
+        /// <param name="credits">Credits for course</param>
+        /// <param name="school">School for course</param>
+        /// <returns>Whether or not successful</returns>
         public static bool createCourse(string code, string name, int credits, string school)
         {
             using (SqlConnection connection =
@@ -214,9 +245,12 @@ namespace RelationalDB_RESTAPI.Utils
             }
         }
 
-        /**
-         * Not done
-         */
+        /// <summary>
+        /// Initializes semester based on a semester object and data table containing data for completion
+        /// </summary>
+        /// <param name="semester">Semester Object for year and period</param>
+        /// <param name="initialization">Datatable containing semester information</param>
+        /// <returns>bool whether or not the server completed the request successfully</returns>
         public static bool SemesterInitialization(Semester semester, DataTable initialization)
         {
             using (SqlConnection connection =

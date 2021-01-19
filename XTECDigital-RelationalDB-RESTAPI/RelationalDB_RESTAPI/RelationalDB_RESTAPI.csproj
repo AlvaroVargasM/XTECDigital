@@ -34,6 +34,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -185,7 +187,6 @@
     <Compile Include="Models\Professor.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Utils\HttpClientConnector.cs" />
-    <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\Toolkit.cs" />
     <Compile Include="Utils\XlslToCSVService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
