@@ -1,0 +1,88 @@
+<div class="card my-course-management-card text-center">
+  <div class="card-body">
+
+    <!--Course List-->
+    <h5 class="card-title">
+      Lista de Cursos Disponibles
+    </h5>
+    <div class="card-text">
+      <div *ngFor="let c of courses" class="row my-course-item">
+        <div class="col">
+          {{ c.name }} | {{ c.code }} <br>
+          Credito(s): {{ c.credits }} <br>
+          Carrera: {{ c.career }}
+          <br>
+          <button class="btn btn-primary my-disable-button">
+            Desabilitar
+          </button>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <!--Add Course-->
+    <h5 class="card-title">
+      Crear Curso
+    </h5>
+    <div class="card-text">
+      <form (ngSubmit)="onCreateCourse()" #newCourse="ngForm">
+        <div class="form-row">
+          <!--Name-->
+          <div class="col">
+            <label for="newCourseName">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              id="newCourseName"
+              ngModel
+              required>
+          </div>
+          <!--Code-->
+          <div class="col">
+            <label for="newCourseCode">Code</label>
+            <input
+              type="text"
+              class="form-control"
+              name="code"
+              id="newCourseCode"
+              ngModel
+              required>
+          </div>
+        </div>
+        <div class="form-row">
+          <!--Credits-->
+          <div class="col">
+            <label for="newCourseCredits">Credit(s)</label>
+            <input
+              type="number"
+              class="form-control"
+              name="credits"
+              id="newCourseCredits"
+              ngModel
+              required>
+          </div>
+          <!--Career-->
+          <div class="col">
+            <label for="newCourseCareer">Career</label>
+            <input
+              type="text"
+              class="form-control"
+              name="career"
+              id="newCourseCareer"
+              ngModel
+              required>
+          </div>
+        </div>
+        <br>
+
+        <div class="form-row justify-content-center">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!newCourse.valid">Crear Curso</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

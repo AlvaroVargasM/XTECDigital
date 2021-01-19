@@ -1,0 +1,18 @@
+.my-brand {
+  color: white;
+}
+
+.navbar-custom {
+  background-color: crimson;
+}
+
+.my-logout-link {
+  color: white;
+}
+
+.my-initialize-semester-button {
+  color: white;
+  background-color: crimson;
+  border: brown 3px solid;
+  margin-top: 10px
+}

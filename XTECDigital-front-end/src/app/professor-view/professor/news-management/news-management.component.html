@@ -1,0 +1,48 @@
+<div class="card my-card">
+  <div class="card-body">
+    <h5 class="card-title">Gestion de Noticias</h5><br>
+    <div class="card-text">
+      <h5 class="card-title text-center">Lista de Noticias</h5>
+      <div style="width: 350px">
+        <div *ngFor="let n of availableNews" style="margin-bottom: 15px">
+          <strong>Noticia:</strong> {{ n.title }} <br>
+          <strong>Por:</strong> {{ n.author }} | {{ n.date }}<br>
+          {{ n.message }}
+          <br>
+          <div class="text-center">
+            <button
+              class="btn btn-danger"
+              (click)="onDeleteNews(n)">Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="text-center">
+        <h5 class="card-title">Agregar Noticia</h5>
+        <form (ngSubmit)="onCreateNews()" #createNews="ngForm">
+          <label for="newTitle">Titulo de Noticia</label><br>
+          <input
+            type="text"
+            id="newTitle"
+            name="title"
+            required
+            ngModel><br>
+          <label for="newMessage">Mensaje de Noticia</label><br>
+          <textarea
+            id="newMessage"
+            name="message"
+            required
+            ngModel>
+          </textarea><br>
+            <button
+              class="btn btn-success"
+              type="submit">
+              Crear
+            </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

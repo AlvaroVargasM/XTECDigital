@@ -2,13 +2,52 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AdminComponent } from './admin-view/admin/admin.component';
+import { ProfessorComponent } from './professor-view/professor/professor.component';
+import { StudentComponent } from './student-view/student/student.component';
+import { LoginComponent } from './home-view/login/login.component';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CourseManagementComponent } from './admin-view/admin/course-management/course-management.component';
+import { StartSemesterComponent } from './admin-view/admin/start-semester/start-semester.component';
+import { UploadSemesterComponent } from './admin-view/admin/upload-semester/upload-semester.component';
+import { RubricManagementComponent } from './professor-view/professor/rubric-management/rubric-management.component';
+import { NewsManagementComponent } from './professor-view/professor/news-management/news-management.component';
+import { AssignEvaluationComponent } from './professor-view/professor/assign-evaluation/assign-evaluation.component';
+import { TeamManagementComponent } from './professor-view/professor/team-management/team-management.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SubmittedEvaluationComponent } from './professor-view/professor/submitted-evaluation/submitted-evaluation.component';
+
+
+const appRoutes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'admin', component: AdminComponent},
+  { path: 'professor', component: ProfessorComponent},
+  { path: 'student', component: StudentComponent}
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminComponent,
+    ProfessorComponent,
+    StudentComponent,
+    LoginComponent,
+    CourseManagementComponent,
+    StartSemesterComponent,
+    UploadSemesterComponent,
+    RubricManagementComponent,
+    NewsManagementComponent,
+    AssignEvaluationComponent,
+    TeamManagementComponent,
+    SubmittedEvaluationComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

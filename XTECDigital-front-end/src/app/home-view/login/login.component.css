@@ -1,0 +1,26 @@
+.main-section {
+  padding: 0;
+  margin: 130px auto 0;
+}
+
+.modal-content {
+  background-color: crimson;
+  border: brown 4px solid;
+  padding: 0 18px;
+}
+
+title,
+h2 {
+  color: white;
+  padding-top: 2%;
+}
+
+i,
+user-img {
+  padding: 5%;
+}
+
+button {
+  margin-bottom: 5%;
+  border: white 1px solid;
+}

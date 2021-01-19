@@ -1,0 +1,169 @@
+<!--Progress-->
+<div class="text-center">
+  <div
+    class="btn my-step-progress-button">
+    <h5>Inicializar un nuevo semestre</h5>
+    Paso {{step}} de 5
+  </div>
+</div>
+
+<!--First Step: Choose semester-->
+<div *ngIf="step === 1" class="card my-start-semester-card text-center">
+  <div class="card-body">
+    <h5 class="card-title">
+      Escoger Semestre Para Iniciar
+    </h5>
+    <div class="card-text">
+      <form (ngSubmit)="onCreateSemester()" #createSemester="ngForm">
+        <div class="form-row">
+          <div class="col">
+            <label for="period">Periodo</label>
+            <select
+              class="form-control"
+              name="period"
+              id="period"
+              required
+              [ngModel]="1">
+              <option value="1">Primer</option>
+              <option value="2">Segundo</option>
+              <option value="V">Verano</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="year">Año</label>
+            <input
+              type="number"
+              class="form-control"
+              name="year"
+              id="year"
+              placeholder="2021"
+              min="2021"
+              max="2100"
+              required
+              ngModel>
+          </div>
+        </div>
+        <br>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!createSemester.valid">Crear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--Second Step: Choose courses-->
+<div *ngIf="step === 2" class="card my-start-semester-card">
+  <div class="card-body">
+    <h5 class="card-title">
+      Escoger Cursos Para Iniciar Semestre
+    </h5>
+    <div class="card-text">
+      <form (ngSubmit)="onSelectCourses()" #selectCourses="ngForm">
+        <div class="form-group" ngModelGroup="courses">
+          <div *ngFor="let c of coursesList" class="form-control container" style="margin-bottom: 10px">
+            <input type="checkbox" ngModel name="{{c.code}}"> {{ c.name }} | {{ c.code }}
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-success">Añadir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--Third Step: Choose group number for the courses-->
+<div *ngIf="step === 3" class="card my-start-semester-card">
+  <div class="card-body">
+    <h5 class="card-title">
+      Escoger número de grupo para los cursos
+    </h5>
+    <div class="card-text">
+      <form (ngSubmit)="onSelectGroups()" #selectGroups="ngForm">
+        <div class="form-group" ngModelGroup="courses">
+          <div class="row" style="margin-bottom: 10px">
+            <div class="col-auto">
+              <div class="card-text" *ngFor="let c of coursesChosen" style="margin-bottom: 25px">
+                {{ c.name }} | {{ c.code }}
+              </div>
+            </div>
+            <div class="col-auto">
+              <div *ngFor="let c of coursesChosen" class="container" style="margin-bottom: 10px">
+                <input
+                  type="number"
+                  class="form-control"
+                  ngModel
+                  required
+                  name="{{c.code}}">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!selectGroups.valid">Escoger</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--Fourth Step: Choose professors for the chosen courses-->
+<div *ngIf="step === 4" class="card my-start-semester-card">
+  <div class="card-body">
+    <h5 class="card-title">
+      Escoger Profesores Para Los Cursos
+    </h5>
+    <div class="card-text">
+      <form (ngSubmit)="onSelectProfessors()" #selectProfessors="ngForm">
+        <div *ngFor="let c of coursesChosen" class="form-group" ngModelGroup="{{ c.code }}">
+          <div style="padding: 2px">
+            <strong>{{ c.name }}</strong>
+          </div>
+          <div *ngFor="let p of professors" class="form-control container" style="margin-bottom: 10px">
+            <input type="checkbox" ngModel name="{{ p.ssn }}"> {{ p.name }} | {{ p.ssn }} | {{ p.email }}
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-success">Seleccionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--Fifth Step: Choose students for the chosen courses-->
+<div *ngIf="step === 5" class="card my-start-semester-card">
+  <div class="card-body">
+    <h5 class="card-title">
+      Escoger Estudiantes Para Los Cursos
+    </h5>
+    <div class="card-text">
+      <form (ngSubmit)="onSelectStudents()" #selectStudents="ngForm">
+        <div *ngFor="let c of coursesChosen" class="form-group" ngModelGroup="{{ c.code }}">
+          <div style="padding: 2px">
+            <strong>{{ c.name }}</strong>
+          </div>
+          <div *ngFor="let s of students" class="form-control container" style="margin-bottom: 10px">
+            <input type="checkbox" ngModel name="{{ s.collegeId }}"> {{ s.name }} | {{ s.collegeId }}
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-success">Seleccionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
