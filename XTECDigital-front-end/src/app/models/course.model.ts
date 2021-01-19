@@ -3,6 +3,6 @@ export class Course {
     public code: string,
     public name: string,
     public credits: number,
-    public career: string
+    public school: string
   ) { }
 }

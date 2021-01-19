@@ -1,5 +1,6 @@
+import { Course } from './../models/course.model';
 import { Injectable } from '@angular/core';
-import {Course} from '../models/course.model';
+import { CommunicationService } from '../communication.service';
 import {Professor} from '../models/professor.model';
 import {Student} from '../models/student.model';
 
@@ -16,7 +17,7 @@ export class AdminService {
     Esta lista se rellena con los cursos disponibles [courses] de la base de datos,
     el manejo de la info de cursos se puede ver en los modelos
    */
-  coursesAvailable: Course[];
+  public coursesAvailable: any;
 
   // START SEMESTER
   coursesActive: Course[] = [];
@@ -33,26 +34,31 @@ export class AdminService {
    */
   studentsList: Student[];
 
-  constructor() {
-    this.coursesAvailable = [
-      new Course(
-        'CE3101',
-        'Bases de Datos',
-        4,
-        'Ingenieria en Computadores'),
-      new Course(
-        'CE2201',
-        'Laboratorio de Circuitos Electricos',
-        1,
-        'Ingenieria en Computadores'),
-      new Course(
-        'EL2207',
-        'Elementos Activos',
-        4,
-        'Ingenieria en Electronica'
-      )
-    ];
-
+  constructor(private comService:CommunicationService) {
+    // this.coursesAvailable = [
+    //   new Course(
+    //     'CE3101',
+    //     'Bases de Datos',
+    //     4,
+    //     'Ingenieria en Computadores'),
+    //   new Course(
+    //     'CE2201',
+    //     'Laboratorio de Circuitos Electricos',
+    //     1,
+    //     'Ingenieria en Computadores'),
+    //   new Course(
+    //     'EL2207',
+    //     'Elementos Activos',
+    //     4,
+    //     'Ingenieria en Electronica'
+    //   )
+    // ];
+    comService.getCourses().then(res=>{
+      this.coursesAvailable = res;
+      console.log(this.coursesAvailable);
+      
+    })
+    
     this.professorsList = [
       new Professor(
         '123654987',
@@ -81,4 +87,5 @@ export class AdminService {
       )
     ];
   }
+
 }

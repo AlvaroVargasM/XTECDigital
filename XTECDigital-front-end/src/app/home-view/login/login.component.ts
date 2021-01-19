@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    console.log(this.loginForm.value.username);
     this.comService.login(this.loginForm.value.username,this.loginForm.value.password);
   }
 }

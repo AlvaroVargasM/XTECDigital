@@ -5,6 +5,7 @@ import {NgForm} from '@angular/forms';
 import {Semester} from '../../../models/semester.model';
 import {Professor} from '../../../models/professor.model';
 import {Student} from '../../../models/student.model';
+import { CommunicationService } from 'src/app/communication.service';
 
 @Component({
   selector: 'app-start-semester',
@@ -23,7 +24,7 @@ export class StartSemesterComponent implements OnInit{
   @ViewChild('selectStudents') selectStudentsForm: NgForm;
 
   step: number;
-  coursesList: Course[];
+  public coursesList;
   coursesChosen: Course[];
   selectedCoursesCodesList: string[] = [];
   professors: Professor[];
@@ -31,12 +32,18 @@ export class StartSemesterComponent implements OnInit{
 
   profes: { course: string, plist: string[] };
 
-  constructor(private aService: AdminService) {
+  constructor(private aService: AdminService, private comService: CommunicationService) {
     this.step = 1;
   }
 
   ngOnInit(): void {
+    // this.comService.getCourses().then(res=>{
+    //   this.coursesList = res;
+    //   console.log(res);
+    // })
     this.coursesList = this.aService.coursesAvailable;
+    console.log(this.coursesList );
+    
     this.coursesChosen = this.aService.coursesActive;
     this.professors = this.aService.professorsList;
     this.students = this.aService.studentsList;
@@ -80,7 +87,7 @@ export class StartSemesterComponent implements OnInit{
               course.code,
               course.name,
               course.credits,
-              course.career));
+              course.school));
         }
       }
     }
