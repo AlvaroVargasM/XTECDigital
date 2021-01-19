@@ -14,7 +14,11 @@ namespace RelationalDB_RESTAPI.Controllers
         public EvaluationsController( ) {
            
         }
-        
+        /*
+         *Description: Saves a evaluations object in SQL 
+         *Params: Object Evaluations
+         *Output: HttpActionResult
+        */
         [HttpPost]
         [Route("Evaluations/Create")]
         public IHttpActionResult Create([FromBody] Evaluations eval)
@@ -25,7 +29,6 @@ namespace RelationalDB_RESTAPI.Controllers
                 eval.id = obj.ToString();
                 _context.evaluations.Add(eval);
                 _context.SaveChanges();
-                //_evaluationAccessProvider.AddEvaluationRecord(eval);
                 return Ok();
             }
             return BadRequest();

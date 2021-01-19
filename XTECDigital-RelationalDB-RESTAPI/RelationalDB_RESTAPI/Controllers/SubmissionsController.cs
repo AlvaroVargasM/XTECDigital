@@ -15,7 +15,11 @@ namespace RelationalDB_RESTAPI.Controllers
         {
 
         }
-
+        /*
+         *Description: Saves a submissions object in SQL 
+         *Params: Object Submissions
+         *Output: HttpActionResult
+        */
         [HttpPost]
         [Route("Submissions/Create")]
         public IHttpActionResult Create([FromBody] Submissions submissions)
