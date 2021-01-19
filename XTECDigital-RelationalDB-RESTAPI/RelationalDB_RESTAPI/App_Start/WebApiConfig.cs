@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RelationalDB_RESTAPI.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -10,6 +11,8 @@ namespace RelationalDB_RESTAPI
     {
         public static void Register(HttpConfiguration config)
         {
+            DocumentManager.startBuildUp();
+            
             // Web API configuration and services
 
             // Web API routes
