@@ -1,0 +1,85 @@
+<div class="card my-card">
+  <div class="card-body">
+    <h5 class="card-title">Asignar Evaluacion</h5>
+    <div class="card-text">
+      <form (ngSubmit)="onCreateEvaluation()" #createEvaluation="ngForm">
+        <div class="form-row">
+          <div class="col">
+            <div class="form-group">
+              <label for="rubric">Rubrica Perteneciente</label>
+              <select
+                name="rubric"
+                id="rubric"
+                class="form-control"
+                ngModel
+                required>
+                <option *ngFor="let r of currentRubrics">{{r.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <label for="value">Valor de Asignacion</label>
+            <input
+              type="number"
+              name="value"
+              id="value"
+              class="form-control"
+              ngModel
+              required>
+          </div>
+          <div class="col">
+            <label for="type">Forma de Entrega</label>
+            <select
+              name="type"
+              id="type"
+              class="form-control"
+              [ngModel]="defaultType"
+              required>
+              <option value="1">Individual</option>
+              <option value="2">Grupal</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="date">Fecha de Entrega</label>
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              name="date"
+              required
+              ngModel>
+          </div>
+          <div class="col">
+            <label for="time">Tiempo de Entrega</label>
+            <input
+              type="time"
+              class="form-control"
+              id="time"
+              name="time"
+              required
+              ngModel>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+          <div class="col">
+            <label for="specification">Subir Especificacion</label>
+            <input
+              type="file"
+              id="specification"
+              class="form-control"
+              (change)="onSelectSpecification($event)">
+          </div>
+        </div>
+        <br>
+        <button
+          type="submit"
+          class="btn btn-success">
+          Crear Evaluacion
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

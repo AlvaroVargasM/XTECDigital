@@ -1,0 +1,72 @@
+<!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg   navbar-custom">
+  <a class="navbar-brand my-brand"><strong>XTEC Digital | Profesor</strong></a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <!--Logout-->
+      <li class="nav-item">
+        <a
+          class="nav-link my-logout-link"
+          [routerLink]="['/']">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--GROUP SELECTION-->
+<div *ngIf="!selectedGroup">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-auto">
+      <div class="card my-card">
+        <div class="card-body">
+          <h5 class="card-title">Grupos Disponibles</h5>
+        </div>
+        <div class="card-text">
+          <div *ngFor="let g of availableGroups" class="text-center">
+            <button
+            class="btn my-button"
+            (click)="onGroupSelect(g)">
+              Grupo: {{ g.gNumber  }} <br>
+              Curso: {{ g.cCode }} <br>
+              Semestre: {{ g.period }} | {{ g.year }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<!--COMPONENTS TO DISPLAY AFTER SELECTING A GROUP-->
+<div *ngIf="selectedGroup">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-auto">
+      <app-rubric-management></app-rubric-management>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-auto">
+      <app-news-management></app-news-management>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-auto">
+      <app-assign-evaluation></app-assign-evaluation>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-auto">
+      <app-submitted-evaluation></app-submitted-evaluation>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>

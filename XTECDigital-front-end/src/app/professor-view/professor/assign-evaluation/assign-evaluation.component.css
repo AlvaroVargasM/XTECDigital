@@ -1,0 +1,12 @@
+.my-card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: brown 3px solid;
+}
+
+.my-button {
+  color: white;
+  background-color: crimson;
+  border: brown 3px solid;
+  margin-bottom: 10px;
+}

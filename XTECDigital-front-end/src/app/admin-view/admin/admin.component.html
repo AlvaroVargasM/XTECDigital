@@ -1,0 +1,41 @@
+<!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg   navbar-custom">
+  <a class="navbar-brand my-brand"><strong>XTEC Digital | Administrador</strong></a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <!--Logout-->
+      <li class="nav-item">
+        <a
+          class="nav-link my-logout-link"
+          [routerLink]="['/home']">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!--Course Management-->
+<div class="row">
+  <div class="col"></div>
+  <div class="col-auto">
+    <app-course-management></app-course-management>
+  </div>
+  <div class="col"></div>
+</div>
+
+<!--Initialize Semester-->
+<div class="row">
+  <div class="col"></div>
+  <div class="col-auto">
+    <app-start-semester></app-start-semester>
+  </div>
+  <div class="col"></div>
+</div>
+
+<!--Upload Semester-->
+<div class="row">
+  <div class="col"></div>
+  <div class="col-auto">
+    <app-upload-semester></app-upload-semester>
+  </div>
+  <div class="col"></div>
+</div>
