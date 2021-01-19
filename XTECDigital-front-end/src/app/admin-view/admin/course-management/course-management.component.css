@@ -1,0 +1,17 @@
+.my-course-management-card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: brown 3px solid;
+}
+
+.my-course-item {
+  padding-bottom: 9px;
+  padding-top: 7px;
+  border-bottom: crimson 1px solid ;
+}
+
+.my-disable-button {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
