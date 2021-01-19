@@ -217,9 +217,30 @@ namespace RelationalDB_RESTAPI.Utils
         /**
          * Not done
          */
-        public static bool SemesterInitialization(Semester semester, Course[] courses, Group[] groups)
+        public static bool SemesterInitialization(Semester semester, DataTable initialization)
         {
-            return false;
+            using (SqlConnection connection =
+                  new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand command =
+                                        new SqlCommand("InitializeSemester", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("year", semester.year);
+                    command.Parameters.AddWithValue("period", semester.period);
+                    command.Parameters.AddWithValue("data", initialization);
+                    connection.Open();
+
+                    bool result = (bool)command.ExecuteScalar();
+
+                    return result;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
         }
     }
 }

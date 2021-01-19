@@ -1,18 +1,22 @@
-﻿using RelationalDB_RESTAPI.Models;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RelationalDB_RESTAPI.Models;
 using RelationalDB_RESTAPI.Utils;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace RelationalDB_RESTAPI.Controllers
 {
+    [RoutePrefix("Semesters")]
     public class SemesterController : ApiController
     {
         [HttpGet]
-        [Route("Semesters")]
         public IHttpActionResult getSemesters()
         {
             List<Semester> semesters = Connector.getSemesters();
@@ -25,7 +29,7 @@ namespace RelationalDB_RESTAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Semesters/{year}/{period}")]
+        [Route("{year}/{period}")]
         public bool isSemesterCreated(string year, string period)
         {
             List<Semester> semesters = Connector.getSemesters();
@@ -38,6 +42,43 @@ namespace RelationalDB_RESTAPI.Controllers
             }
 
             return false;
+        }
+
+        [HttpPost]
+        [Route("Initialize")]
+        public bool initializeSemester()
+        {
+            Semester semester = JsonConvert.DeserializeObject<Semester>(HttpContext.Current.Request.Params["semester"].ToString());
+            string[] coursesSelected = Toolkit.separateByDelimiter(HttpContext.Current.Request.Params["coursesSelected"], ',');
+            string[] groups = Toolkit.separateByDelimiter(HttpContext.Current.Request.Params["groups"], ',');
+            string[] professors = Toolkit.separateByDelimiter(HttpContext.Current.Request.Params["professors"], ';');
+
+            for(int i = 0; i < professors.Length; i++)
+            {
+                professors[i] = professors[i].Substring(0, professors[i].Length - 1);
+            }
+
+            string[] students = Toolkit.separateByDelimiter(HttpContext.Current.Request.Params["students"], ';');
+
+            for (int i = 0; i < students.Length; i++)
+            {
+                students[i] = students[i].Substring(0, students[i].Length - 1);
+            }
+
+            DataTable dataTable = new DataTable();
+
+            dataTable.Columns.Add("Course", typeof(string));
+            dataTable.Columns.Add("Group", typeof(string));
+            dataTable.Columns.Add("Professors", typeof(string));
+            dataTable.Columns.Add("Students", typeof(string));
+
+            for(int i = 0; i < groups.Length; i++)
+            {
+                dataTable.Rows.Add(coursesSelected[i], groups[i], professors[i], students[i]);
+            }
+
+            return Connector.SemesterInitialization(semester, dataTable);
+
         }
     }
 }
