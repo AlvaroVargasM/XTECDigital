@@ -14,7 +14,7 @@ namespace RelationalDB_RESTAPI.DataAccess
             
         }
         public DbSet<Evaluations> evaluations { get; set; }
-
+        public DbSet<Submissions> submissions { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

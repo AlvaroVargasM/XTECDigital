@@ -176,6 +176,7 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SemesterController.cs" />
+    <Compile Include="Controllers\SubmissionsController.cs" />
     <Compile Include="DataAccess\SQLContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,6 +187,7 @@
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Run.cs" />
     <Compile Include="Models\Semester.cs" />
+    <Compile Include="Models\Submissions.cs" />
     <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\Toolkit.cs" />
     <Compile Include="Utils\XlslToCSVService.cs" />
