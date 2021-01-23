@@ -8,26 +8,25 @@ using System.Web.Http;
 
 namespace RelationalDB_RESTAPI.Controllers
 {
-    public class EvaluationsController : ApiController
+    public class SubmissionsController : ApiController
     {
         public readonly SQLContext _context = new SQLContext();
-        public EvaluationsController( ) {
-           
+        public SubmissionsController()
+        {
+
         }
         /*
-         *Description: Saves a evaluations object in SQL 
-         *Params: Object Evaluations
+         *Description: Saves a submissions object in SQL 
+         *Params: Object Submissions
          *Output: HttpActionResult
         */
         [HttpPost]
-        [Route("Evaluations/Create")]
-        public IHttpActionResult Create([FromBody] Evaluations eval)
+        [Route("Submissions/Create")]
+        public IHttpActionResult Create([FromBody] Submissions submissions)
         {
             if (ModelState.IsValid)
             {
-                Guid obj = Guid.NewGuid();
-                eval.id = obj.ToString();
-                _context.evaluations.Add(eval);
+                _context.submissions.Add(submissions);
                 _context.SaveChanges();
                 return Ok();
             }

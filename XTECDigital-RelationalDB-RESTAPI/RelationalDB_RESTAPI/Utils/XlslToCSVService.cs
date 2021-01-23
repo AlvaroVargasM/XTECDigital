@@ -18,6 +18,11 @@ namespace RelationalDB_RESTAPI.Models
             "Network Library = DBMSSOCN; Initial Catalog = XTECDigital; " +
             "User ID = dxnium; Password=Dumanamonge9921";
 
+        /*
+         *Description: Converts an excel file to a .csv file
+         *Params: Path string
+         *Output: None
+        */
         public void convertToCsv(string path)
         {
             FileStream stream = File.Open(path, FileMode.Open, FileAccess.Read);
@@ -58,6 +63,11 @@ namespace RelationalDB_RESTAPI.Models
             csv.Close();
 
         }
+        /*
+         *Description: Saves the .csv file to a temporary SQL table
+         *Params: File 
+         *Output: true or false
+        */
         public bool SaveExcelToSQL(HttpPostedFile file) {
             XlslToCSVService xlstToCSV = new XlslToCSVService();
             DocumentManager.saveToTempFolder(file);
